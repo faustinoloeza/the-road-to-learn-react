@@ -1,36 +1,36 @@
-# Introduction to React
+# Introducción a React
 
-The chapter gives you an introduction to React. You may ask yourself: Why should I learn React in the first place? The chapter might give you the answer to that question. Afterward you will dive into the ecosystem by bootstrapping your first React application. Along the way you will get an introduction to JSX and ReactDOM. Be prepared for your first React component.
+El capitulo te da una introducción a React. Podrias preguntarte: Por que debo aprender React en primer lugar? El capitulo podria darte la respuesta a esa pregunta. Despues te sumergiras en el ecosistema iniciando tu primera aplicación React. En el camino se te dara una introducción a JSX y ReactDOM. Preparate para tu primer componente React.
 
-## Hi, my name is React.
+## Hola, mi nombre es React.
 
-**Why should you bother to learn React?** In recent years single page applications ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) have become popular. Frameworks like Angular, Ember and Backbone helped JavaScript developers to build modern web applications beyond the usage of jQuery. The list is not exhaustive. There exists a wide range of SPA frameworks. When you consider the release dates, most of them are among the first generation of SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**Por qué deberías molestarte en aprender React?** En los ultimos años las single page aplications ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) se han vuelto popular. Frameworks como Angular, Ember y Backbone Ayudó a los desarrolladores de JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de  SPA frameworks. Cuando consideras las fechas de lanzamiento, La mayoría de ellos están entre la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
-The initial React release was 2013 by Facebook. React is not an SPA framework but a view library. It is the V in the [MVC](https://de.wikipedia.org/wiki/Model_View_Controller) (model view controller). It only enables you to render components as viewable elements in a browser. Yet the whole ecosystem around React makes it possible to build single page applications.
+La versión inicial de React fue en 2013 por Facebook. React no es un SPA framework pero si una libreria para la vista. Es la V en [MVC](https://de.wikipedia.org/wiki/Model_View_Controller) (modelo vista controlador). Sólo le permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
 
-But why should you consider using React over the first generation of SPA frameworks? While the first generation of frameworks tried to solve a lot of things at once, React only helps you to build your view layer. It's a library and not a framework. The idea behind it: Your view is a hierarchy of composable components.
+Pero por que deberias considerar usar React sobre la primera generacion de Frameworks SPA? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React solo te ayuda a construir tu capa de vista. Es una biblioteca y no un Framework. La idea detrás de ella: Su vista es una jerarquía de componentes componibles.
 
-In React you can focus on your view before you introduce more aspects to your application. Every other aspect is another building block for your SPA. These building blocks are essential to build a mature application. They come with two advantages.
+En React, puedes centrarte en tu vista antes de introducir más aspectos en su aplicación. Cada otro aspecto es otro componente de su SPA. Estos bloques de construcción son esenciales para construir una aplicación madura. Vienen con dos ventajas.
 
-First you can learn the building blocks step by step. You don't have to worry about understanding them altogether. It is different from a framework that gives you every building block from the start. This book focuses on React as the first building block. More building blocks follow eventually.
+Primero puedes aprender los bloques de construcción paso a paso. No tienes que preocuparte de entenderlos por completo. Es diferente de un marco que le da cada bloque de construcción desde el principio. Este libro se centra en React como el primer bloque de construcción. Más bloques de construcción siguen con el tiempo.
 
-Second all building blocks are interchangeable. It makes the ecosystem around React such an innovative place. Multiple solutions are competing with each other. You can pick the most appealing solution for you and your use case.
+En segundo lugar todos los bloques de construcción son intercambiables. Hace que el ecosistema alrededor de React sea un lugar tan innovador. Múltiples soluciones están compitiendo entre sí. Puede elegir la solución más atractiva para usted y su caso de uso.
 
-The first generation of SPA frameworks arrived at an enterprise level. They are more rigid. React stays innovative and gets adopted by multiple tech thought leader companies like [Airbnb, Netflix and of course Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). All of them invest in the future of React and are content with React and the ecosystem itself.
+La primera generación de Frameworks de SPA llegó a nivel empresarial. Son más rígidos. Reac permanece innovador y se adopto por varias empresas líderes de pensamiento tecnológico como [Airbnb, Netflix y por supuesto Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). Todos ellos invierten en el futuro de React y se conforman con React y su propio ecosistema.
 
-React is probably one of the best choices for building single page applications nowadays. It only delivers the view layer, but the React ecosystem is a whole flexible and interchangeable framework. React has a slim API, an amazing ecosystem and a great community. You can read about my experiences [why I moved from Angular to React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/). I highly recommend to have an understanding why you would choose React over another framework or library. After all everyone is keen to experience where React will lead us in 2017 and beyond.
+React es probablemente una de las mejores opciones para la construcción de aplicaciones de una sola página hoy en día. Sólo ofrece la capa de vista, pero el ecosistema de React es un framework completo, flexible e intercambiable . React tiene una API simple, un ecosistema impresionante y una gran comunidad. Puedes leer acerca de mis experiencias del por qué me mudé de Angular a React. Recomiendo encarecidamente tener una comprensión de por qué elegiría React sobre otro Framework o biblioteca. Después de todo, todo el mundo está interesado en experimentar a donde nos guiará React en 2017 y más allá.
 
-### Exercises
+### Ejercicios
 
-* read about [why I moved from Angular to React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
+* Leer acerca [por qué me moví de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
 
-## Requirements
+## Requerimientos
 
-Before you start to read the book, you should be familiar with HTML, CSS and JavaScript (ES5). The book will teach JavaScript ES6 and beyond. If you are coming from a different SPA framework or library, you should already be familiar with the basics. If you have just started in web development, you should feel comfortable with HTML, CSS and JavaScript ES5 to learn React. I encourage you to join the official [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/) for the book to get help or to help others.
+Antes de empezar a leer el libro, debe familiarizarse con HTML, CSS y JavaScript (ES5). El libro enseñará JavaScript ES6 y más allá. Si vienes de un marco o biblioteca de SPA diferente, ya deberías estar familiarizado con los conceptos básicos. Si acaba de comenzar en el desarrollo web, debería sentirse cómodo con HTML, CSS y JavaScript ES5 para aprender React. Les animo a que se unan al canal oficial [Slack ](https://slack-the-road-to-learn-react.wieruch.com/) para obtener el libro o ayudar a otros .
 
-Every developer needs tools to build applications. You will need an editor (IDE) and terminal (command line) tool. You can read my developer setup to organize your tools: [Developer Setup](https://www.robinwieruch.de/developer-setup/). It is adjusted for Mac users, but you can substitute most of the tools for other operating system.
+Cada desarrollador necesita herramientas para crear aplicaciones. Necesitaras un editor (IDE) y una herramienta de terminal (línea de comandos). Puedes leer mi configuración de desarrollador para organizar tus herramientas: [Configuración del desarrollador](https://www.robinwieruch.de/developer-setup/). Se ajusta para los usuarios de Mac, pero puedes sustituir la mayoría de las herramientas para otro sistema operativo.
 
-The editor is used to organize and write your code. The terminal is used to execute commands. A command can be to start your application, to run tests or to install other libraries for your project.
+El editor se utiliza para organizar y escribir su código. El terminal se utiliza para ejecutar comandos. Un comando puede ser iniciar su aplicación, ejecutar pruebas o instalar otras bibliotecas para su proyecto.
 
 Last but not least you will need an installation of [node and npm](https://nodejs.org/en/). Both are used to manage libraries you will need along the way to learn React. You will install external node packages via npm (node package manager). These node packages can be libraries or whole frameworks.
 
