@@ -1,10 +1,10 @@
 # Introducción a React
 
-El capitulo te da una introducción a React. Podrias preguntarte: Por que debo aprender React en primer lugar? El capitulo podria darte la respuesta a esa pregunta. Despues te sumergiras en el ecosistema iniciando tu primera aplicación React. En el camino se te dara una introducción a JSX y ReactDOM. Preparate para tu primer componente React.
+El capitulo te da una introducción a React. Podrias preguntarte: ¿Por que debo aprender React en primer lugar? El capitulo podria darte la respuesta a esa pregunta. Despues te sumergiras en el ecosistema iniciando tu primera aplicación React. En el camino se te dara una introducción a JSX y ReactDOM. Preparate para tu primer componente React.
 
 ## Hola, mi nombre es React.
 
-**Por qué deberías molestarte en aprender React?** En los ultimos años las single page aplications ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) se han vuelto popular. Frameworks como Angular, Ember y Backbone Ayudó a los desarrolladores de JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de  SPA frameworks. Cuando consideras las fechas de lanzamiento, La mayoría de ellos están entre la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**¿Por qué deberías molestarte en aprender React?** En los ultimos años las single page aplications ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) se han vuelto popular. Frameworks como Angular, Ember y Backbone Ayudó a los desarrolladores de JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de  SPA frameworks. Cuando consideras las fechas de lanzamiento, La mayoría de ellos están entre la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
 La versión inicial de React fue en 2013 por Facebook. React no es un SPA framework pero si una libreria para la vista. Es la V en [MVC](https://de.wikipedia.org/wiki/Model_View_Controller) (modelo vista controlador). Sólo le permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
 
@@ -32,11 +32,10 @@ Cada desarrollador necesita herramientas para crear aplicaciones. Necesitaras un
 
 El editor se utiliza para organizar y escribir su código. El terminal se utiliza para ejecutar comandos. Un comando puede ser iniciar su aplicación, ejecutar pruebas o instalar otras bibliotecas para su proyecto.
 
-Last but not least you will need an installation of [node and npm](https://nodejs.org/en/). Both are used to manage libraries you will need along the way to learn React. You will install external node packages via npm (node package manager). These node packages can be libraries or whole frameworks.
+Por último, pero no menos importante, necesitará instalar [node and npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitará en el camino para aprender React. Se instalarán paquetes de node externos a través de npm (gestor de paquetes de node). Estos paquetes de node pueden ser bibliotecas o entornos completos.
 
-You can verify your versions of node and npm on the command line. If you don't get any output in the terminal, you need to install node and npm first. These are my versions:
+Puedes verificar tus versiones de node y npm en la línea de comandos. Si no obtiene ninguna salida en la terminal, primero debe instalar node y npm. Estas son mis versiones:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 node --version
 *v8.1.3
@@ -44,45 +43,40 @@ npm --version
 *v5.0.4
 ~~~~~~~~
 
-## node and npm
+## node y npm
 
-This chapter gives you a little crash course in node and npm. It is not exhaustive, but you will get all the necessary tools. If you are familiar with both of them, you can skip the chapter.
+Este capítulo le dara un pequeño curso intensivo en nodo y npm. No es exhaustivo, pero obtendrá todas las herramientas necesarias. Si está familiarizado con ambos, puede omitir el capítulo.
 
-The **node package manager** (npm) allows you to install external **node packages** from the command line. These packages can be a set of utility functions, libraries or whole frameworks. They are the dependencies of your application. You can either install these packages to your global node package folder or to your local project folder.
+El **manejador de paquetes de node** (npm) Permite instalar **paquetes externos **desde la linea de comandos. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o entornos completos. Son las dependencias de su aplicación. Puede instalar estos paquetes en su carpeta de paquetes de node global o en su carpeta de proyecto local.
 
-Global node packages are accessible from everywhere in the terminal and you have to install them only once. You can install a global package by typing in your terminal:
+Los paquetes de nodos globales son accesibles desde cualquier lugar del terminal y solo hay que instalarlos una vez. Puede instalar un paquete global escribiendo su terminal:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
-npm install -g <package>
-~~~~~~~~
-
-The `-g` flag tells npm to install the package globally. Local packages are used in your application. For instance, React as a library will be a local package which can be required in your application for usage. You can install it via the terminal by typing:
-
-{title="Command Line",lang="text"}
-~~~~~~~~
-npm install <package>
+npm install -g <paquete>
 ~~~~~~~~
 
-In the case of React it would be:
+La `-g` bandera indica a npm que debe instalar el paquete globalmente. Los paquetes locales se utilizan en su aplicación. Por ejemplo, React como una biblioteca será un paquete local que puede ser requerido en su aplicación para su uso.Puede instalarlo a través de la terminal escribiendo:
 
-{title="Command Line",lang="text"}
+~~~~~~~~
+npm install <paquete>
+~~~~~~~~
+
+En el caso de React sería:
+
 ~~~~~~~~
 npm install react
 ~~~~~~~~
 
-The installed package will automatically appear in a folder called *node_modules/*. But be careful. Whenever you install a local package you shouldn't forget the neat `--save` flag:
+El paquete instalado aparecerá automáticamente en una carpeta llamada *node_modules/*. Pero ten cuidado. Siempre que instales un paquete local no debes olvidar la bandera `--save`:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 npm install --save <package>
 ~~~~~~~~
 
-The `--save` flag tells npm to store the package requirement in a file called *package.json*. The file can be found in your project folder.
+La bandera `--save` le indica a npm que debe almacenar el paquete requerido en un archivo llamado *package.json*. El archivo se puede encontrar en la carpeta del proyecto.
 
-Not every project folder comes with a *package.json* file though. There is a npm command to initialize a npm project and thus a *package.json* file. Only when you have that file, you can install new local packages via npm.
+Sin embargo no todas las carpetas del proyecto vienen con un archivo package.json. There is a npm command to initialize a npm project and thus a *package.json* file. Only when you have that file, you can install new local packages via npm.
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 npm init -y
 ~~~~~~~~
