@@ -4,9 +4,9 @@ El capitulo te da una introducción a React. Podrias preguntarte: ¿Por que debo
 
 ## Hola, mi nombre es React.
 
-**¿Por qué deberías molestarte en aprender React?** En los ultimos años las single page aplications ([SPA](https://en.wikipedia.org/wiki/Single-page_application)) se han vuelto popular. Frameworks como Angular, Ember y Backbone Ayudó a los desarrolladores de JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de  SPA frameworks. Cuando consideras las fechas de lanzamiento, La mayoría de ellos están entre la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**¿Por qué deberías molestarte en aprender React?** En los ultimos años las single page aplications ([SPA](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto popular. Frameworks como Angular, Ember y Backbone Ayudó a los desarrolladores de JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de  SPA frameworks. Cuando consideras las fechas de lanzamiento, La mayoría de ellos están entre la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
-La versión inicial de React fue en 2013 por Facebook. React no es un SPA framework pero si una libreria para la vista. Es la V en [MVC](https://de.wikipedia.org/wiki/Model_View_Controller) (modelo vista controlador). Sólo le permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
+La versión inicial de React fue en 2013 por Facebook. React no es un SPA framework pero si una libreria para la vista. Es la V en [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador) (modelo vista controlador). Sólo le permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
 
 Pero por que deberias considerar usar React sobre la primera generacion de Frameworks SPA? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React solo te ayuda a construir tu capa de vista. Es una biblioteca y no un Framework. La idea detrás de ella: Su vista es una jerarquía de componentes componibles.
 
@@ -22,7 +22,7 @@ React es probablemente una de las mejores opciones para la construcción de apli
 
 ### Ejercicios
 
-* Leer acerca [por qué me moví de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
+* Leer acerca de [por qué me moví de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
 
 ## Requerimientos
 
@@ -75,102 +75,95 @@ npm install --save <package>
 
 La bandera `--save` le indica a npm que debe almacenar el paquete requerido en un archivo llamado *package.json*. El archivo se puede encontrar en la carpeta del proyecto.
 
-Sin embargo no todas las carpetas del proyecto vienen con un archivo package.json. There is a npm command to initialize a npm project and thus a *package.json* file. Only when you have that file, you can install new local packages via npm.
+Sin embargo no todas las carpetas del proyecto vienen con un archivo package.json. Hay un comando npm para inicializar un proyecto npm y asi un  archivo *package.json*. Solo cuando tienes ese archivo, puedes instalar un nuevo paquete localmente via npm.
 
 ~~~~~~~~
 npm init -y
 ~~~~~~~~
 
-The `-y` flag is a shortcut to initialize all the defaults in your *package.json*. If you don't use it, you have to decide how to configure the file.
+La bandera `-y` es un acceso directo para inicializar todos los valores predeterminados en tu *package.json*. Si no lo usas, tienes que decidir como configurar el archivo.
 
-One more word about the *package.json*. The file enables you to share your project with other developers without sharing all the node packages. The file has all the references of node packages used in your project. These packages are called dependencies. Everyone can copy your project without the dependencies. The dependencies are references in the *package.json*. Someone who copies your project can install all packages by using `npm install` on the command line.
+Algo mas sobre el archivo *package.json*. El archivo permite que compartas tu proyecto con otros desarrolladores sin compartir todos los paquetes node. El archivo contiene todas las referencias de los paquetes node utilzados en tu proyecto. Estos paquetes son llamados dependencias. Cualquiera puede copiar tu proyecto sin las depencias. Las dependencias son referenciadas en el archivo *package.json*. Alguien que copie tu proyecto puede instalar todos los paquetes usando `npm install` en la linea de comandos.
 
-I want to cover one more npm command to prevent confusion:
+Quiero cubrir un comando npm mas para prevenir confusiones:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 npm install --save-dev <package>
 ~~~~~~~~
 
-The `--save-dev` flag indicates that the node package is only used in the development environment. It will not be used in production when you deploy your application on a server. What kind of node package could that be? Imagine you want to test your application with the help of a node package. You need to install that package via npm, but want to exclude it from your production environment. There you don't want to test your application anymore. It should be tested already and work out of the box for users. That's only one use case where you would want to use the `--save-dev` flag.
+La bandera `--save-dev` indica que el paquete node es solo usado en el entorno de desarollo. No sera usado en producción cuando deployes tu aplicacion en un servidor. Que tipo de paquete seria ese? Imagina que quieres testear tu aplicacion con la ayuda de un paquete node. Necesitas instalar ese paquete a traves npm, pero quieres excluirlo de tu entorno de producción. Alli ya no desearas testear tu aplicación. Ya debería estar probada y funcionar para todos los usuarios. That's only one use case where you would want to use the `--save-dev` flag. Este es solo un caso de uso donde querras usar la bandera `--save-dev`. 
 
-You will encounter more npm commands on your way. But these will be sufficient for now.
+Encontraras mas comandos npm en el camino. Pero estos seran sufientes por ahora.
 
-### Exercises:
+### Ejercicios:
 
-* setup a throw away npm project
-  * create a new folder with `mkdir <folder_name>`
-  * navigate into the folder with `cd <folder_name>`
-  * execute `npm init -y`
-  * install a local package like React with `npm install --save react`
-  * have a look into the *package.json* file and the *node_modules/* folder
-  * find out how to uninstall the *react* node package
-* read more about [npm](https://docs.npmjs.com/)
+* Configurar un proyecto npm inicial 
+  * crear una nueva carpeta con `mkdir <nombre_de_la_carpeta>`
+  * navegue a la carpeta con `cd <nombre_de_la_carpeta>`
+  * ejecute `npm init -y`
+  * instale un paquete local como React con `npm install --save react`
+  * echale un vistazo al archivo *package.json* y a la carpeta *node_modules/*
+  * descubre como desinstalar el paquete node *react*
+* leer mas sobre [npm](https://docs.npmjs.com/)
 
-## Installation
+## Instalación
 
-There are multiple approaches to get started with a React application.
+Hay varios enfoques para comenzar con una aplicación React.
 
-The first one is to use a CDN. That may sound more complicated than it is. A CDN is a [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network). Several companies have CDNs that host files publicly for users. These files can be libraries like React. After all a library can be only one JavaScript file. It can be hosted somewhere and you can require it in your application.
+La primera es usar un CDN. Eso puede sonar más complicado de lo que es. Un CDN es una [red de entrega de contenidos](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos). Muchas compañias tienen CDNs que almacenan publicamente archivos para los usuarios. Estos archivos pueden ser librerias como React. Despues de todo una libreria puede ser solo un archivo JavaScript. Se pueden alojar en algún lugar y se pueden requerir en tu aplicación.
 
-How to use a CDN to get started in React? You can inline the `<script>` tag in your HTML that points to a CDN url. To get started in React you need two files (libraries): *react* and *react-dom*.
+Como usar un CDN para comenzar con React? Puedes insertar la etiqueta `<script>` en su código HTML que apunta a una url de CDN. Para empezar en React necesitas dos archivos (librerias): *react* y *react-dom*.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 <script src="https://unpkg.com/react@15/dist/react.js"></script>
 <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
 ~~~~~~~~
 
-But why should you use a CDN when you have npm to install node packages (libraries)?
+Pero por que deberias usar un CDN cuando tienes npm para instalar paquetes node (librerias)?
 
-When your application has a *package.json* file, you can install *react* and *react-dom* from the command line. The requirement is that the folder is initialized as npm project with a *package.json* file. You can install multiple node packages in one line with npm.
+Cuando tu aplicacion tien un archivo *package.json*, puedes instalar *react* y *react-dom* desde la linea de comandos. El requisito es que la carpeta se inicialice como proyecto npm con un archivo *package.json*. Puedes instalar multiples paquetes en una linea con npm.
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 npm install --save react react-dom
 ~~~~~~~~
 
-That approach is often used to add React to an existing application.
+Ese enfonque se utiliza a menudo para añadir React a una aplicación existente.
 
-Unfortunately that's not everything. You would have to deal with [Babel](http://babeljs.io/) to make your application aware of JSX - the React syntax - and JavaScript ES6. Babel transpiles your code that browsers can interpret ES6 and JSX. Not all browsers are capable of interpreting the syntax. The setup includes a lot of configuration and tooling. It can be overwhelming for React beginners to bother with all the configuration.
+Desafortunadamente eso no es todo. Tendrias que lidear con [Babel](http://babeljs.io/) para hacer tua aplicacion compatible con JSX - la sintaxis de React - y JavaScript ES6. Babel transpiles your code that browsers can interpret ES6 and JSX. No todos los navegadores son capaces de interpretar la sintanxis. La configuración incluye una gran cantidad de configuración y herramientas. Puede ser abrumador para los principientes molestarse con toda la configuración de React.
 
-Because of this reason, Facebook introduced *create-react-app* as a zero-configuration React solution. The next chapter will show you how to setup your application.
+Por esta razon, Facebook introdujo *create-react-app* como una solucion de configuración cero. El siguiente capítulo te mostrará cómo configurar su aplicación.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [React installations](https://facebook.github.io/react/docs/installation.html)
+* leer mas sobre [React installations](https://facebook.github.io/react/docs/installation.html)
 
-## Zero-Configuration Setup
+## Configuración de configuración-cero
 
-In the Road to learn React you will use [create-react-app](https://github.com/facebookincubator/create-react-app) to bootstrap your application. It's an opinionated yet zero-configuration starter kit for React introduced by Facebook in 2016. People would [recommend it to beginners by 96%](https://twitter.com/dan_abramov/status/806985854099062785). In *create-react-app* the tooling and configuration evolve in the background while the focus is on the application implementation.
+En el camino de aprender React usaras [create-react-app](https://github.com/facebookincubator/create-react-app) tpara arrancar tu aplicación. It's an opinionated yet zero-configuration starter kit for React introduced by Facebook in 2016. La gente [lo recomenda a los principiantes en un 96%](https://twitter.com/dan_abramov/status/806985854099062785). En *create-react-app* las herramientas y la configuración evolucionan en segundo plano mientras que el foco está en la implementación de la aplicación
 
-To get started, you will have to install the package to your global node packages. After that you always have it available on the command line to bootstrap new React applications.
+Para empezar, necesitaras instalar el paquete a tus paquetes globales node. Despues de eso siempre los tendras disponibles en la linea de comandos para inicializar nuevas aplicaciones React.
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 npm install -g create-react-app
 ~~~~~~~~
 
-You can check the version of *create-react-app* to verify a successful installation on your command line:
+Puedes comprobar la versión de *create-react-app* para verificar una instalación correcta en la linea de comandos:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 create-react-app --version
 ~~~~~~~~
 
-It should give you an output about the version. Mine is: 1.3.3.
+Debe darte la version. La mia es la: 1.3.3.
 
-Now you can bootstrap your first React application. We call it *hackernews*, but you can choose a different name. Afterward simply navigate into the folder:
+Ahora puedes iniciar tu primera aplicación React. La llamamos *hackernews*, pero puedes elegir otro nombre. Despues simplemente navega hacia la carpeta:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 create-react-app hackernews
 cd hackernews
 ~~~~~~~~
 
-Now you can open the application in your editor. The following folder structure, or a variaton of it depending on the create-react-app version, should be presented to you:
+Ahora puedes abrir la aplcación en tu editor. La siguiente estructura de carpetas, o variacion de esta depente de la version de create-react-app, deberia mostrarte:
 
-{title="Folder Structure",lang="text"}
 ~~~~~~~~
 hackernews/
   README.md
@@ -189,45 +182,43 @@ hackernews/
     logo.svg
 ~~~~~~~~
 
-In the beginning everything you need is located in the *src/* folder.
+Al principio todo lo que necesitas se encuentra en la carpeta *src/*.
 
-The main focus lies on the *src/App.js* file to implement React components. It will be used to implement your application, but later you might want to split up your components into multiple files.
+El foco principal se encuentra en el archivo *src/App.js* para implementar componentes React. Se utilizara para implementar tu aplicación, pero mas adelante desees dividir tus componentes en varios archivos.
 
-Additionally you will find a *src/App.test.js* file for tests and a *src/index.js* as entry point to the React world. You will get to know both files in a later chapter. In addition, there is a *src/index.css* and a *src/App.css* file to style your application and components. They all come with default style when you open them.
+Adicionalmente encontras un archivo *src/App.test.js* para pruebas y un *src/index.js* como punto de entrada al mundo de React. Conoceras ambos archivos en un capitulo posterior.Ademas, hay un archivo *src/index.css* y un archivo *src/App.css* para darle estilos a tu aplicación y componentes. Todos vienen con estilo por defecto cuando se abren.
 
-Next to to the *src/* folder you will find the *package.json* file and *node_modules/* folder to manage your node packages. The *create-react-app* application is a npm project. You can use npm to install and uninstall node packages to your project.
+Al lado de la carpeta *src/* encontrarás el archivo *package.json*  y la carpeta  *node_modules/* para administrar tus paquetes node. La aplicación *create-react-app* es un proyecto npm. Puede usar npm para instalar y desinstalar paquetes node en tu proyecto.
 
-The *create-react-app* project comes with the following npm scripts for your command line:
+El proyecto  *create-react-app* viene con los siguientes scripts npm para su línea de comandos:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
-// Runs the application in http://localhost:3000
+// Ejecuta la aplicacion en http://localhost:3000
 npm start
 
-// Runs the tests
+// Ejecuta las pruebas
 npm test
 
-// Builds the application for production
+// Crea la aplicación para la producción
 npm run build
 ~~~~~~~~
 
-The scripts are defined in your *package.json* too. Your boilerplate React application is bootstrapped now.
+Los scripts también se definen en el *package.json*. Tu aplicacion React esta inicializada.
 
-### Exercises:
+### Ejercicios:
 
-* `npm start` your application and visit the page in your browser
-* run the interactive `npm test` script
-* make yourself familiar with the folder structure
-* make yourself familiar with the content of the files
-* read more about [the scripts and create-react-app](https://github.com/facebookincubator/create-react-app)
+* `npm start` inicia tu aplicacion y visita la pagina en tu navegador 
+* ejecuta el comando interactivo `npm test`
+* familiarizate con la estrutura de carpetas
+* familiarizate con el contenido de los archivos
+* leer mas sobre [los comandos y create-react-app](https://github.com/facebookincubator/create-react-app)
 
-## Introduction to JSX
+## Introducción a JSX
 
-Now you will get to know JSX. It is the syntax in React. As I mentioned before, *create-react-app* has already bootstrapped a boilerplate application. All files come with default implementations. Let's dive into the source code.
+Ahora conocerás a JSX. Es la sintaxis de React. Como he mencionado antes, *create-react-app* ya ha iniciado una aplicación estándar.Todos los archivos vienen con implementaciones predeterminadas. Vamos a sumergirnos en el código fuente.
 
-The only file you will touch in the beginning will be the *src/App.js* file.
+El único archivo que tocará al principio será el archivo *src/App.js*.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 import React, { Component } from 'react';
 import logo from './logo.svg';
@@ -252,9 +243,9 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Don't let yourself get confused by the import/export statements and class declaration. These features are already JavaScript ES6. We will revisit those in a later chapter.
+No te dejes confundir por las declaraciones de import/export y declaracion de clases. Estas características ya son JavaScript ES6. Volveremos a verlas en un capítulo posterior.
 
-In the file you have an **ES6 class component** with the name App. It is a component declaration. Basically after you have declared a component, you can use it as element everywhere in your application. It will produce an **instance** of your **component** or in other words: the component gets instantiated.
+En el archivo tienes un ** componente ES6 class ** con el nombre App. It is a component declaration. Basically after you have declared a component, you can use it as element everywhere in your application. It will produce an **instance** of your **component** or in other words: the component gets instantiated.
 
 The **element** it returns is specified in the `render()` method. Elements are what components are made of. It is useful to understand the differences between component, instance and element.
 
