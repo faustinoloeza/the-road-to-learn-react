@@ -4,7 +4,7 @@ El capitulo te da una introducción a React. Podrias preguntarte: ¿Por que debo
 
 ## Hola, mi nombre es React.
 
-**¿Por qué deberías molestarte en aprender React?** En los ultimos años las single page aplications ([SPA](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto popular. Frameworks como Angular, Ember y Backbone Ayudó a los desarrolladores de JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de  SPA frameworks. Cuando consideras las fechas de lanzamiento, La mayoría de ellos están entre la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**¿Por qué deberías molestarte en aprender React?** En los ultimos años las single page aplications ([SPA](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto popular. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de  SPA frameworks. Cuando consideras las fechas de lanzamiento, La mayoría de ellos están entre la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
 La versión inicial de React fue en 2013 por Facebook. React no es un SPA framework pero si una libreria para la vista. Es la V en [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador) (modelo vista controlador). Sólo le permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
 
@@ -243,19 +243,18 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-No te dejes confundir por las declaraciones de import/export y declaracion de clases. Estas características ya son JavaScript ES6. Volveremos a verlas en un capítulo posterior.
+No te dejes confundir por las declaraciones de import/export y declaracion de clases. Estas características son JavaScript ES6. Volveremos a verlas en un capítulo posterior.
 
-En el archivo tienes un ** componente ES6 class ** con el nombre App. It is a component declaration. Basically after you have declared a component, you can use it as element everywhere in your application. It will produce an **instance** of your **component** or in other words: the component gets instantiated.
+En el archivo tienes un ** componente ES6 class ** con el nombre App. Es una declaración de componente. Básicamente después de haber declarado un componente, puedes utilizarlo como elemento en cualquier parte de tu aplicación. Producirá una **instancia** de su **componente** o en otras palabras: El componente se instancia.
 
-The **element** it returns is specified in the `render()` method. Elements are what components are made of. It is useful to understand the differences between component, instance and element.
+El **elemento** que devuelve se especifica en el método `render()`. Los elementos son de lo que estan hechos los componentes. Es útil comprender las diferencias entre componente, instancia y elemento.
 
-Pretty soon you will see where the App component is used. Otherwise you wouldn't see the rendered output in the browser, would you? The App component is only the declaration, but not the usage. You would instantiate the component somewhere in your JSX with `<App />`.
+Muy pronto veras donde se utiliza el componente App. De lo contrario, no verá la salida renderizada en el navegador, verdad? El componente App es sólo la declaración, pero no el uso. Se podría instanciar el componente en algún lugar de su JSX con `<App />`.
 
-The content in the render block looks pretty similar to HTML, but it's JSX. JSX allows you to mix HTML and JavaScript. It's powerful yet confusing when you are used to plain HTML. That's why a good starting point is to use basic HTML in your JSX. Next you can start to embed JavaScript expressions in between by using curly braces.
+El contenido en el bloque render se parece bastante a HTML, pero es JSX. JSX le permite mezclar HTML y JavaScript. Es potente pero confuso cuando estás acostumbrado a HTML simple. Es por eso que un buen punto de partida es utilizar HTML básico en su JSX. A continuación, puedes empezar a incrustar expresiones JavaScript entre llaves.
 
-First let's remove all the clutter in the file.
+Primero vamos a eliminar todo el desorden en el archivo.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
@@ -273,23 +272,18 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Now you only return HTML without JavaScript. Let's make the "Welcome to the Road to learn React" a variable. A variable can be used in your JSX.
+Ahora sólo devuelve HTML sin JavaScript. Hagamos una variable "Bienvenido al camino para aprender React". Una variable puede utilizarse en su JSX.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
   render() {
-# leanpub-start-insert
-    var helloWorld = 'Welcome to the Road to learn React';
-# leanpub-end-insert
+    var helloWorld = 'Bienvenido al camino para aprender React';
     return (
       <div className="App">
-# leanpub-start-insert
         <h2>{helloWorld}</h2>
-# leanpub-end-insert
       </div>
     );
   }
@@ -298,44 +292,41 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-It should work when you start your application on the command line.
+Debería funcionar cuando inicie su aplicación en la línea de comandos..
 
-Additionally you might have noticed the `className` attribute. It reflects the standard `class` attribute in HTML. Because of technical reasons, JSX had to replace a handful of internal HTML attributes. You can find all of the [supported HTML attributes in the React documentation](https://facebook.github.io/react/docs/dom-elements.html). On your way to learn React you will come across some more JSX attributes.
+Además, es posible que hayas notado el atributo `className`. Refleja el atributo estándar `class` en HTML. Debido a razones técnicas, JSX tuvo que reemplazar un puñado de atributos HTML internos. Puede encontrar todos los [atributos HTML compatibles en la documentación de React](https://facebook.github.io/react/docs/dom-elements.html). En tu camino para aprender React e encontrarás con más atributos JSX.
 
-### Exercises:
+### Ejercicios:
 
-* define more variables and render them in your JSX
-  * use a complex object to represent an user with a first name and last name
-* read more about [JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
-* read more about [React components, elements and instances](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
+* Definir más variables y renderizarlas en tu JSX
+  * Utilizar un objeto complejo para representar a un usuario con nombre y apellido
+* leer mas sobre [JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
+* leer mas sobre [React componentes, elementos e instancias](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
 
-## ES6 const and let
+## ES6 const y let
 
-I guess you noticed that we declared the variable `helloWorld` with `var`. JavaScript ES6 comes with two more options to declare your variables: `const` and `let`. In JavaScript ES6 you will rarely find `var` anymore. Let's get some explanation for `const` and `let`:
+Supongo que notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 viene con dos opciones más para declarar sus variables: `const` y `let`. En JavaScript ES6 rara vez encontrarás `var`. Daremos una explicación para `const` y `let`:
 
-A variable declared with `const` cannot be re-assigned or re-declared. It cannot get mutated (changed, modified). You embrace immutable data structures by using it. Once the data structure is defined, you cannot change it.
+Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada, modificada). Adoptas estructuras de datos inmutables al usarlo. Una vez que se define la estructura de datos, no se puede cambiar.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// not allowed
+// No permitido
 const helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-A variable declared with `let` can get mutated.
+Una variable declarada con `let` puede mutar.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// allowed
+// Permitido
 let helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
 
-You would use it when you would need to re-assign a variable.
+Lo usarías cuando necesitaras volver a asignar una variable.
 
-However, you have to be careful with `const`. A variable declared with `const` cannot get modified. But when the variable is an array or object, the value it holds can get altered. The value it holds is not immutable.
+Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `const` no se puede modificar. Pero cuando la variable es un array o un objeto, el valor que tiene puede ser alterado. El valor que tiene no es inmutable.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // allowed
 const helloWorld = {
@@ -344,13 +335,12 @@ const helloWorld = {
 helloWorld.text = 'Bye Bye React';
 ~~~~~~~~
 
-But when to use each declaration? There are different opinions about the usage. I suggest using `const` whenever you can. It indicates that you want to keep your data structure immutable even though values in objects and arrays can get modified. If you want to modify your variable, you can use `let`.
+Pero cuando usar cada una? Hay diferentes opiniones sobre su uso. Sugiero usar `const` cada que puedas. Indica que desea mantener su estructura de datos inmutable aunque los valores en objetos y arreglos se pueden modificar. Si desea modificar la variable, puede utilizar `let`.
 
-Immutability is embraced in React and its ecosystem. That's why `const` should be your default choice when you define a variable. Still, in complex objects the values within can get modified. Be careful about this behavior.
+La inmutabilidad es adoptada en React y su ecosistema. Es por eso que `const` debe ser tu opción por defecto cuando se define una variable. Sin embargo, en objetos complejos los valores internos pueden ser modificados. Tenga cuidado con este comportamiento.
 
-In your application you should use `const` over `var`.
+En su aplicación debe utilizar `const` sobre `var`.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
