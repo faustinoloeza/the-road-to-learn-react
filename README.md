@@ -1,22 +1,22 @@
-# The Road to learn React
+# El camino para aprender React
 
-The official repository for the open source book [The Road to learn React](https://www.robinwieruch.de/the-road-to-learn-react/). You can find the [Source Code](https://github.com/rwieruch/hackernews-client) too.
+El repositorio oficial del libro de código abierto [El camino para aprender React](https://www.robinwieruch.de/the-road-to-learn-react/). Puedes encontrar tambien el [Código Fuente ](https://github.com/rwieruch/hackernews-client).
 
-## Updates, Help and Support
+## Actualizaciones, Ayuda y Soporte
 
-* Get book updates via [E-Mail](https://www.getrevue.co/profile/rwieruch) or [Twitter](https://twitter.com/rwieruch)
-* Get help, while learning React with the book or teach others, in the official [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
+* Obtener actualizaciones del libro por [E-Mail](https://www.getrevue.co/profile/rwieruch) o [Twitter](https://twitter.com/rwieruch)
+* Obtener ayuda, mientras aprendes React con el libro o enseñar a otros, en el canal oficial [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
 * Find out how you can [Support the Book](https://www.robinwieruch.de/about/)
 
-## Contribute
+## Contribuir
 
-You can help to improve the book by opening Pull Requests (PR) and Issues.
+Puede ayudar a mejorar el libro abriendo Pull Requests (PR) y errores.
 
-You can open up any PR that corrects spelling or explains a certain lesson with more detail. When writing such a technical book, you get fast blind on what needs more explanation and on what is already explained well.
+Puede abrir cualquier PR que corrige la ortografía o explica una cierta lección con más detalle. Al escribir este libro técnico, te cegas rapidamente sobre que necesita más explicación y en lo que ya está bien explicado.
 
-In addition, you can open Issues when you run into problems. In order to make the fix for the Issue as easy as possible, please provide a couple of details such as error log, screenshot, which page of the book it happened, your node version (command line: node -v) and a link to your own repository. Not all of these details are mandatory, but most of them help to fix the Issue and to improve the book.
+Además, puede abrir errores cuando tengas problemas. Con el fin de hacer la solución para el problema tan fácil como sea posible, por favor proporcione un par de detalles tales como log de errores, impresiones de pantalla, en cual página del libro ocurrió, tu versión de node (linea de comandos: node -v) y un enlace a tu propio repositorio. No todos estos detalles son obligatorios, pero la mayoría de ellos ayudan a solucionar el error y mejorar el libro.
 
 ---
 
-Thanks for your help,
+Gracias por tu ayuda,
 Robin
