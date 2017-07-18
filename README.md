@@ -10,11 +10,11 @@ El repositorio oficial del libro de código abierto [El camino para aprender Rea
 
 ## Contribuir
 
-Puede ayudar a mejorar el libro abriendo Pull Requests (PR) y errores.
+Puedes ayudar a mejorar el libro abriendo Pull Requests (PR) e issues.
 
-Puede abrir cualquier PR que corrige la ortografía o explica una cierta lección con más detalle. Al escribir este libro técnico, te cegas rapidamente sobre que necesita más explicación y en lo que ya está bien explicado.
+Puede abrir cualquier PR que corrige la ortografía o  que explica una cierta lección con más detalle. Al escribir este libro técnico, te cegas rapidamente sobre que necesita más explicación y en lo que ya está bien explicado.
 
-Además, puede abrir errores cuando tengas problemas. Con el fin de hacer la solución para el problema tan fácil como sea posible, por favor proporcione un par de detalles tales como log de errores, impresiones de pantalla, en cual página del libro ocurrió, tu versión de node (linea de comandos: node -v) y un enlace a tu propio repositorio. No todos estos detalles son obligatorios, pero la mayoría de ellos ayudan a solucionar el error y mejorar el libro.
+Además, puede abrir issues cuando tengas problemas. Con el fin de hacer la solución para el problema tan fácil como sea posible, por favor proporciona un par de detalles tales como log de errores, impresiones de pantalla, en cual página del libro ocurrió, tu versión de node (linea de comandos: node -v) y un enlace a tu propio repositorio. No todos estos detalles son obligatorios, pero la mayoría de ellos ayudan a solucionar el error y a mejorar el libro.
 
 ---
 

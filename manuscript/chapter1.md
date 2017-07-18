@@ -361,19 +361,18 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-### Exercises:
+### Ejercicios:
 
-* read more about ES6 [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
-* read more about ES6 [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
-* research more about immutable data structures
-  * why do they make sense in programming in general
-  * why are they used in React and its ecosystem
+* leer mas sobre ES6 [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+* leer mas sobre ES6 [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+* investigue más sobre estructuras de datos inmutables
+  * ¿Por qué tienen sentido en la programación en general?
+  * ¿Por qué se utilizan en React y su ecosistema?
 
 ## ReactDOM
 
-Before you continue with the App component, you might want to see where it is used. It is located in your entry point to the React world: the *src/index.js* file.
+Antes de continuar con el componente App, es posible que desee ver dónde se utiliza. Se encuentra en su punto de entrada al mundo de React: el archivo *src/index.js*.
 
-{title="src/index.js",lang=javascript}
 ~~~~~~~~
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -386,15 +385,14 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-Basically `ReactDOM.render()` uses a DOM node in your HTML to replace it with your JSX. That's how you can easily integrate React in every foreign application. It is not forbidden to use `ReactDOM.render()` multiple times across your application. You can use it at multiple places to bootstrap simple JSX syntax, a React component, multiple React components or a whole application.
+Básicamente `ReactDOM.render()` usa un nodo DOM en su HTML para reemplazarlo con su JSX. Así es como puedes integrar fácilmente React en cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en tu aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
 
-`ReactDOM.render()` expects two arguments.
+`ReactDOM.render()` espera dos argumentos.
 
-The first argument is JSX that gets rendered. The second argument specifies the place where the React application hooks into your HTML. It expects an element with an `id='root'`. You can open your *public/index.html* file to find the id attribute.
+El primer argumento es JSX que se renderizara. El segundo argumento especifica el lugar en el que la aplicación React se insertara en tu código HTML. Espera un elemento con un `id='root'`. Puedes abrir tu archivo *public/index.html* para encontrar el atributo id.
 
-In the implementation `ReactDOM.render()` already takes your App component. However, it would be fine to pass simpler JSX as long as it is JSX. It doesn't have to be an instantiation of a component.
+En la implementación `ReactDOM.render()` ya tiene tu componente App. Sin embargo, sería bueno pasar JSX más simple, siempre y cuando sea JSX. No tiene que ser una instancia de un componente.
 
-{title="Code Playground",lang=javascript}
 ~~~~~~~~
 ReactDOM.render(
   <h1>Hello React World</h1>,
@@ -402,20 +400,19 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-### Exercises:
+### Ejercicios:
 
-* open the *public/index.html* to see where the React applications hooks into your HTML
-* read more about [rendering elements in React](https://facebook.github.io/react/docs/rendering-elements.html)
+* abre el *public/index.html* para ver dónde se conectan las aplicaciones React en su HTML
+* leer mas sobre [renderizando elementos en React](https://facebook.github.io/react/docs/rendering-elements.html)
 
-## Hot Module Reloading
+## Modulo Hot Reloading
 
-There is one thing that you can do in the *src/index.js* file to improve your experience as a developer.
+Hay una cosa que usted puede hacer en el archivo *src/index.js* para mejorar su experiencia como desarrollador.
 
 In *create-react-app* it is already an advantage that the browser automatically refreshes the page when you change your source code. Try it by changing the `helloWorld` variable in your *src/App.js* file. The browser should refresh the page. But you can do better.
 
 Hot Module Reloading (HMR) is a tool to reload your application in the browser. The browser doesn't perform a page refresh. You can easily activate it in *create-react-app*. In your *src/index.js* - your entry point to React - you have to add one little configuration.
 
-{title="src/index.js",lang=javascript}
 ~~~~~~~~
 import React from 'react';
 import ReactDOM from 'react-dom';
