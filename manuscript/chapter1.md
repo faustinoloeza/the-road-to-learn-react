@@ -443,16 +443,14 @@ El mayor beneficio es que puede mantener el estado de la aplicación con HMR. Im
 
 ## JavaScript complejo en JSX
 
-Let's get back to your App component. So far you rendered some primitive variables in your JSX. Now you will start to render a list of items. The list will be artificial data in the beginning, but later you will fetch the data from an external API. That will be far more exciting.
+Volvamos al componente App. Hasta ahora se han renderizado algunas variables primitivas en su JSX. Ahora usted comenzará a renderizar una lista de artículos.La lista será datos artificiales en el principio, pero más tarde obtendrás los datos de una API externa. Eso será mucho más emocionante.
 
-First you have to define the list of items.
+Primero tienes que definir la lista de elementos.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
 
-# leanpub-start-insert
 const list = [
   {
     title: 'React',
@@ -471,29 +469,25 @@ const list = [
     objectID: 1,
   },
 ];
-# leanpub-end-insert
 
 class App extends Component {
   ...
 }
 ~~~~~~~~
 
-The artifical data will reflect the data we will fetch later on from the API. An item in the list has a title, an url and a author. Additionally it comes with an identifier, points (which indicate how popular an article is) and a count of comments.
+Los datos artificiales reflejarán los datos que extraeremos más adelante de la API. Un elemento de la lista tiene un título, una url y un autor. Además viene con un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
 
-Now you can use the built-in JavaScript `map` functionality in your JSX. It enables you to iterate over your list of items to display them. As mentioned, you will use curly braces to encapsulate the JavaScript expression in your JSX.
+Ahora puede utilizar la función de `map` JavaScript incorporada en su JSX. Te permite iterar sobre tu lista de elementos para mostrarlos. Como se mencionó, usará llaves para encapsular la expresión JavaScript en su JSX.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-# leanpub-start-insert
         { list.map(function(item) {
           return <div>{item.title}</div>;
         })}
-# leanpub-end-insert
       </div>
     );
   }
@@ -502,18 +496,16 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-That's pretty powerful in JSX. Usually you might have used `map` to convert one list of items to another list of items. This time you use `map` to convert a list of items to HTML elements.
+Eso es bastante poderoso en JSX. Por lo general, es posible que haya utilizado `map` para convertir una lista de elementos a otra lista de elementos. Esta vez utiliza `map` para convertir una lista de elementos en elementos HTML.
 
-So far, only the `title` will be displayed for each item. But let's display some more of the item properties.
+Hasta ahora, sólo se mostrará el `título` de cada elemento. Pero vamos a mostrar algunas más de las propiedades del artículo.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-# leanpub-start-insert
         { list.map(function(item) {
           return (
             <div>
@@ -526,7 +518,6 @@ class App extends Component {
             </div>
           );
         })}
-# leanpub-end-insert
       </div>
     );
   }
@@ -535,17 +526,14 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-You can see how the map function is simply inlined in your JSX. Each item property is displayed in a `<span>` tag. Moreover the url property of the item is used in the `href` attribute of the anchor tag.
+Puede ver cómo la función map está simplemente en línea en su JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad url del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
 
-React will do all the work for you and display each item. But you should add one helper for React to embrace its full potential and improve its performance. You have to assign a key attribute to each list element. That way React is able to identify added, changed and removed items when the list changes. The artificial list items come with an identifier already.
+React hará todo el trabajo por usted y mostrara cada elemento. Pero debe agregar un helper para que React alcance su máximo potencial y mejore su rendimiento. Debe asignar un atributo key a cada elemento de lista. Así, React es capaz de identificar los elementos añadidos, cambiados y eliminados cuando la lista cambia. Los elementos artificiales de la lista ya vienen con un identificador.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 { list.map(function(item) {
   return (
-# leanpub-start-insert
     <div key={item.objectID}>
-# leanpub-end-insert
       <span>
         <a href={item.url}>{item.title}</a>
       </span>
@@ -557,9 +545,8 @@ React will do all the work for you and display each item. But you should add one
 })}
 ~~~~~~~~
 
-You should make sure that the key attribute is a stable identifier. Don't make the mistake of using the item index in the array. The array index isn't stable at all. For instance, when the list changes its order, React will have a hard time identifying the items properly.
+Debe asegurarse de que el atributo key es un identificador estable. No cometa el error de usar el índice de elementos en el array. El índice del array no es del todo estable. Por ejemplo, cuando la lista cambia su orden, React tendrá dificultades para identificar los elementos correctamente.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 // don't do this
 { list.map(function(item, key) {
@@ -571,19 +558,18 @@ You should make sure that the key attribute is a stable identifier. Don't make t
 })}
 ~~~~~~~~
 
-You are displaying both list items now. You can start your app, open your browser and see both items of the list displayed.
+Ahora mostrarás los dos elementos de la lista. Puedes iniciar tu aplicación, abrir tu navegador y ver los dos elementos de la lista desplegados.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [React lists and keys](https://facebook.github.io/react/docs/lists-and-keys.html)
-* recap the [standard built-in Array functionalities in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-* use more JavaScript expressions on your own in JSX
+* leer mas sobre [React lists and keys](https://facebook.github.io/react/docs/lists-and-keys.html)
+* recapitular el [standard built-in Array functionalities in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+* Utilice más expresiones JavaScript por tu cuenta en JSX
 
 ## ES6 Arrow Functions
 
-JavaScript ES6 introduced arrow functions. An arrow function expression is shorter than a function expression.
+JavaScript ES6 introduce arrow functions. Una expresión arrow function es más corta que una expresión de funcion.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // function expression
 function () { ... }
@@ -592,11 +578,10 @@ function () { ... }
 () => { ... }
 ~~~~~~~~
 
-But you have to be aware of its functionalities. One of them is a different behavior with the `this` object. A function expression always defines its own `this` object. Arrow function expressions still have the `this` object of the enclosing context. Don't get confused when using `this` in an arrow function.
+Pero tienes que ser consciente de sus funcionalidades. One of them is a different behavior with the `this` object. A function expression always defines its own `this` object. Arrow function expressions still have the `this` object of the enclosing context. Don't get confused when using `this` in an arrow function.
 
 There is another valuable fact about arrow functions regarding the parenthesis. You can remove the parenthesis when the function gets only one argument, but have to keep them when it gets multiple arguments.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // allowed
 item => { ... }
@@ -613,7 +598,6 @@ item, key => { ... }
 
 However, let's have a look at the `map` function. You can write it more concisely with an ES6 arrow function.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 # leanpub-start-insert
 { list.map(item => {
