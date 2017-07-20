@@ -409,9 +409,9 @@ ReactDOM.render(
 
 Hay una cosa que usted puede hacer en el archivo *src/index.js* para mejorar su experiencia como desarrollador.
 
-In *create-react-app* it is already an advantage that the browser automatically refreshes the page when you change your source code. Try it by changing the `helloWorld` variable in your *src/App.js* file. The browser should refresh the page. But you can do better.
+En *create-react-app* ya es una ventaja que el navegador actualice automáticamente la página cuando cambia el código fuente. Inténtelo cambiando la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe actualizar la página. Pero puedes hacerlo mejor.
 
-Hot Module Reloading (HMR) is a tool to reload your application in the browser. The browser doesn't perform a page refresh. You can easily activate it in *create-react-app*. In your *src/index.js* - your entry point to React - you have to add one little configuration.
+Modulo Hot Reloading (HMR) es una herramienta para recargar su aplicación en el navegador. El navegador no actualiza la página. Puede activarlo fácilmente en *create-react-app*. En tu *src/index.js* - tu punto de entrada de React -  tienes que agregar una pequeña configuración.
 
 ~~~~~~~~
 import React from 'react';
@@ -423,28 +423,25 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
-
-# leanpub-start-insert
 if (module.hot) {
   module.hot.accept()
 }
-# leanpub-end-insert
 ~~~~~~~~
 
-That's it. Try again to change the `hellowWorld` variable in your *src/App.js* file. The browser shouldn't perform a page refresh, but the application reloads and shows the correct output. HMR comes with multiple advantages:
+Eso es todo. Intente cambiar de nuevo la variable `hellowWorld` en tu archivo *src/App.js*. El navegador no debe actualizar la página, pero la aplicación vuelve a cargar y muestra la salida correcta. HMR viene con múltiples ventajas:
 
-Imagine you are debugging your code with `console.log()` statements. These statements will stay in your developer console, even though you change your code, because the browser doesn't refresh the page anymore. That can be convenient for debugging purposes.
+Imagine que está depurando su código con declaraciones `console.log()`. Estas declaraciones permanecerán en la consola de desarrolladores, incluso si cambia su código, porque el navegador ya no actualiza la página. Eso puede ser conveniente para fines de depuración.
 
-In a growing application a page refresh delays your productivity. You have to wait until the page loads. A page reload can take several seconds in a large application. HMR takes away this disadvantage.
+En una aplicación en crecimiento, una actualización de página demora su productividad. Tienes que esperar hasta que la página se cargue. Una recarga de página puede tardar varios segundos en una aplicación grande. HMR quita esta desventaja.
 
-The biggest benefit is that you can keep the application state with HMR. Imagine you have a dialog in your application with multiple steps and you are at step 3. Basically it is a wizard. Without HMR you would change the source code and your browser refreshes the page. You would have to open the dialog again and would have to navigate from step 1 to step 3. With HMR your dialog stays open at step 3. It keeps the application state even though the source code changes. The application itself reloads, but not the page.
+El mayor beneficio es que puede mantener el estado de la aplicación con HMR. Imagine que tiene un diálogo en su aplicación con varios pasos y que está en el paso 3. Básicamente es un mago. Sin HMR cambiaría el código fuente y su navegador actualizará la página. Usted tendría que abrir el cuadro de diálogo de nuevo y sin tener que navegar desde el paso 1 al paso 3. Con HMR su diálogo permanece abierto en el paso 3. Mantiene el estado de la aplicación aunque el código fuente cambie. La aplicación misma se vuelve a cargar, pero no la página.
 
-### Exercises:
+### Ejercicios:
 
-* change your *src/App.js* source code a few times to see HMR in action
-* watch the first 10 minutes of [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) by Dan Abramov
+* cambia el código fuente de *src/App.js* algunas veces para ver HMR en acción
+* ver los primeros 10 minutos de [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) po Dan Abramov
 
-## Complex JavaScript in JSX
+## JavaScript complejo en JSX
 
 Let's get back to your App component. So far you rendered some primitive variables in your JSX. Now you will start to render a list of items. The list will be artificial data in the beginning, but later you will fetch the data from an external API. That will be far more exciting.
 
