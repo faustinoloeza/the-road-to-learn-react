@@ -1,12 +1,12 @@
 # Conceptos básicos en React
 
-El capítulo les guiará a través de los fundamentos de React. It covers state and interactions in components, because static components are a bit dull, aren't they? Additionally you will learn about the different ways to declare a component and how to keep components composeable and reusable. Be prepared to breathe life into your components.
+El capítulo les guiará a través de los fundamentos de React. Cubre el estado y las interacciones en los componentes, porque los componentes estáticos son un poco aburridos, ¿no? Además, aprenderá sobre las diferentes maneras de declarar un componente y cómo mantener componentes ensamblables y reutilizables. Esté preparado para dar vida a sus componentes.
 
-## Internal Component State
+## Estado interno del componente
 
-Internal component state allows you to store, modify and delete properties of your component. The ES6 class component can use a constructor to initialize internal component state. The constructor is called only once when the component initializes.
+El estado interno del componente te permite almacenar, modificar y eliminar propiedades de tu componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
 
-Let's introduce a class constructor where you can set the initial internal component state.
+Vamos a introducir un constructor de clase donde se puede establecer el estado interno inicial del componente.
 
 ~~~~~~~~
 class App extends Component {
@@ -24,9 +24,10 @@ class App extends Component {
 }
 ~~~~~~~~
 
-In your case the initial state is the artificial list of items. Note that you have to call `super(props);` to call the constructor of the extended Component class. It's mandatory, because it sets `this.props` in your constructor. You should follow the best practice, otherwise you might run into bugs in the future.
+En tu caso, el estado inicial es la lista artificial de elementos.
+Tenga en cuenta que tiene que llamar `super(props);` para llamar al constructor de la clase de extendida componente. Es obligatorio, ya que establece `this.props` en tu constructor. Debes seguir la mejor práctica, de lo contrario podrías encontrarte con errores en el futuro.
 
-The state is bound to the class with the `this` object. You can access the state in your component. For instance, it can be used in the `render()` method. Earlier you mapped a static list of items. Now you are about to use the list from your internal component state.
+El estado está ligado a la clase con el objeto `this`. Puedes acceder al estado en tu componente. Por ejemplo, se puede utilizar en el método  `render()`. Anteriormente, se asignó una lista estática de elementos. Ahora está a punto de usar la lista de su estado interno del componente.
 
 ~~~~~~~~
 class App extends Component {
@@ -52,18 +53,18 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The list is part of the component now. It resides in the internal component state. You could add items, change items or remove items in and from your list. Every time you change your component state, the `render()` method of your component will run again. That's how you can simply change your internal component state and be sure that the component re-renders.
+La lista es parte del componente ahora. Reside en el estado interno del componente.  Podría agregar artículos, cambiar artículos o quitar artículos en y de su lista. Cada vez que cambies el estado del componente, el metodo `render()` de tu componente se ejecutará de nuevo. Así es como puede simplemente cambiar el estado del componente interno y asegurarse de que el componente se vuelva a renderizar.
 
-But be careful. Don't mutate the state directly. You have to use a method called `setState()` to modify your state. You will get to know it in a following chapter.
+Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método llamado `setState()` para modificar su estado. Lo conoceras en un capítulo siguiente.
 
-### Exercises:
+### Ejercicios:
 
-* experiment with the internal state
-  * define more initial state in the constructor
-  * use the state in your `render()` method
-* read more about [the ES6 class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
+* experimenta con el estado interno
+  * define mas estados uniciales en el contructor
+  * usa el estado en tu metodo `render()`
+* leer mas sobre [the ES6 class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
 
-## ES6 Object Initializer
+## Inicializador de objetos ES6
 
 In JavaScript ES6 you can use a shorthand property syntax to initialize your objects more concise. Imagine the following object initialization:
 
