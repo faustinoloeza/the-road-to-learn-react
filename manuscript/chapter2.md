@@ -66,7 +66,7 @@ Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método 
 
 ## Inicializador de objetos ES6
 
-In JavaScript ES6 you can use a shorthand property syntax to initialize your objects more concise. Imagine the following object initialization:
+En JavaScript ES6 puedes utilizar una sintaxis de propiedad abreviada para inicializar tus objetos más concisos. Imagine la siguiente inicialización de objeto:
 
 ~~~~~~~~
 const name = 'Robin';
@@ -76,7 +76,7 @@ const user = {
 };
 ~~~~~~~~
 
-When the property name in your object can be the same as your variable name, you can do the following:
+Cuando el nombre de la propiedad en su objeto sea el mismo que su nombre de variable, puede hacer lo siguiente:
 
 ~~~~~~~~
 const name = 'Robin';
@@ -86,7 +86,7 @@ const user = {
 };
 ~~~~~~~~
 
-In your application you can do the same. The list variable name and the state property name share the same name.
+En su aplicación puede hacer lo mismo. El nombre de la variable de lista y el nombre de la propiedad de estado comparten el mismo nombre.
 
 ~~~~~~~~
 // ES5
@@ -100,7 +100,7 @@ this.state = {
 };
 ~~~~~~~~
 
-Another neat helper are shorthand method names. In ES6 you can initialize methods in an object more concise.
+Otro buen ayudante son los nombres abreviados de métodos. En ES6 puedes inicializar métodos en un objeto más conciso.
 
 ~~~~~~~~
 // ES5
@@ -118,7 +118,7 @@ const userService = {
 };
 ~~~~~~~~
 
-Last but not least, you are allowed to use computed property names in ES6.
+Por último, pero no menos importante, se le permite usar nombres de propiedad calculados en ES6.
 
 ~~~~~~~~
 // ES5
@@ -133,18 +133,18 @@ const user = {
 };
 ~~~~~~~~
 
-Computed property names might make no sense yet. Why should you need it? In a future chapter in the book you will come to a point where you can use it.
+Los nombres de propiedad calculadas podrían no tener sentido aún. ¿Por qué las necesitarias? En un capítulo futuro del libro llegarás a un punto en el que puedras usarlo.
 
-### Exercises:
+### Ejercicios:
 
-* experiment with ES6 object initializer
-* read more about [ES6 object initializer](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+* experimenta con el inicializador de objetos ES6
+* leer más sobre [ES6 object initializer](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 
-## Unidirectional Data Flow
+## Flujo de datos unidireccional
 
-Now you have some internal state in your App component. However, you have not manipulated the internal state yet. The state is static and thus is the component. A good way to experience state manipulation is to have some component interaction.
+Ahora tienes un estado interno en tu componente App. Sin embargo, no has manipulado el estado interno todavía. El estado es estático y por lo tanto tambien lo es el componente. Una buena manera de experimentar la manipulación del estado es tener alguna interacción de componentes.
 
-Let's add a button for each item in the displayed list. The button says "Dismiss" and will remove the item from the list. It could be useful eventually when you only want to keep a list of unread items.
+Vamos a agregar un botón para cada elemento en la lista mostrada. El botón dice "Dismiss" y eliminará el elemento de la lista. Podría ser útil eventualmente cuando sólo desea mantener una lista de elementos no leídos.
 
 ~~~~~~~~
 class App extends Component {

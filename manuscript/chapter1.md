@@ -14,7 +14,7 @@ En React, puedes centrarte en tu vista antes de introducir más aspectos en tu a
 
 Primera puedes aprender los bloques de construcción paso a paso. No tienes que preocuparte de entenderlos por completo. Es diferente de un framework que te da cada bloque de construcción desde el principio. Este libro se centra en React como el primer bloque de construcción. Más bloques de construcción vienen con el tiempo.
 
-En segundo lugar todos los bloques de construcción son intercambiables. Esto hace que el ecosistema alrededor de React sea un lugar muy innovador. Múltiples soluciones están compitiendo entre sí. Puede elegir la solución más atractiva para ti y tu caso de uso.
+En segundo lugar todos los bloques de construcción son intercambiables. Esto hace que el ecosistema alrededor de React sea un lugar muy innovador. Múltiples soluciones están compitiendo entre sí. Puedes elegir la solución más atractiva para ti y tu caso de uso.
 
 La primera generación de Frameworks SPA llegó a nivel empresarial. Son más rígidos. React permanece innovador y se adopto por varias empresas líderes de pensamiento tecnológico como [Airbnb, Netflix y por supuesto Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). Todos ellos invierten en el futuro de React y se conforman con React y su propio ecosistema.
 
