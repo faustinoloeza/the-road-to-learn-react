@@ -178,11 +178,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-As you can see the `onDismiss()` method in the `onClick` function gets enclosed by another function. Only that way you can sneak in the `objectID` property. Otherwise you would have to define the function outside. However, by using an ES6 arrow function you can inline it.
+Como puedes ver el metodo `onDismiss()` en la funcion `onClick` queda cerrada por otra función. Sólo de esa manera usted puede colarse en la propiedad `objectID`. De lo contrario, tendría que definir la función fuera. Sin embargo, utilizando una arrow fuction ES6, puedes hacerlo en línea.
 
-Note that elements with multiple attributes get messy as one line at some point. That's why the button element is already used with multilines and indentation to keep it readable. But it is not mandatory. It is only a code style recommendation.
+Tenga en cuenta que los elementos con múltiples atributos se desordenan en una línea en algún momento. Es por eso que el elemento de botón se utiliza con multilineas e identado para mantenerlo legible. Pero no es obligatorio. Es sólo un estilo de código recomendable.
 
-Now you have to implement the `onDismiss()` functionality. It takes an item id to identify the item to dismiss. The function is bound to the class and thus becomes a class method. You have to bind class methods in the constructor. Additionally you have to define its functionality in your class.
+Ahora tienes que implementar la funcionalidad `onDismiss()`. Se necesita un id del item para identificar el elemento a descartar. La función está vinculada a la clase y se convierte así en un método de clase. Tienes que enlazar métodos de clase en el constructor. Además tienes que definir su funcionalidad en tu clase.
 
 ~~~~~~~~
 class App extends Component {
@@ -207,7 +207,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Now you can define what happens inside of the class method. Since you want to remove the clicked item from your list, you can do that with the built-in array filter functionality. The filter function takes a function to evaluate each item in the list. If the evaluation for an item is true, the item stays in the list. Otherwise it will get removed. Additionally the function returns a new list and doesn't mutate the old list. It keeps the immutable data structure.
+Ahora puede definir lo que sucede dentro del método de clase. Puesto que usted desea quitar el artículo clicado de su lista, puedes hacerlo con la funcionalidad de filtro de array incorporada. La función de filtro toma una función para evaluar cada elemento de la lista. Si la evaluación de un item es true, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
 
 ~~~~~~~~
 onDismiss(id) {
@@ -220,7 +220,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-You can do it more concisely by using an ES6 arrow function again.
+Puede hacerlo de forma más concisa utilizando nuevamente una función ES6 arrow function.
 
 ~~~~~~~~
 onDismiss(id) {
@@ -229,7 +229,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-You could even inline it - like we did in the `onClick()` handler of the button - but it might get less readable.
+Podrías incluso hacerlo en una línea, como lo hicimos en el controlador `onClick()` del botón - pero puede ser menos legible.
 
 ~~~~~~~~
 onDismiss(id) {
@@ -237,7 +237,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-The list removes the clicked item now. However the state isn't updated yet. Therefore you can finally use the `setState()` class method to update the list in the internal component state.
+La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, finalmente puede utilizar el metodo de clase `setState()` para actualizar la lista en el estado interno del componente.
 
 ~~~~~~~~
 onDismiss(id) {
@@ -247,11 +247,11 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Now run again your application and try the "Dismiss" button. It should work. What you experience now is the **unidirectional data flow** in React. You trigger an action in your view - with `onClick()` - a function or class method modifies the internal component state and the `render()` method of the component runs again to update the view.
+Ahora vuelve a ejecutar tu aplicación y prueba el boton "Dismiss". Deberia de funcionar. Lo que acabas de experimentar es el **Flujo de datos unidireccional** en React. Usted activa una acción en su vista - con `onClick()` - una funcion o método de clase modifica el estado del componente interno y el metodo `render()` del componente se ejecuta de nuevo para actualizar la vista.
 
 ![Internal state update with unidirectional data flow](images/set-state-to-render-unidirectional.png)
 
-### Exercises:
+### Ejercicios:
 
 * read more about [the state and lifecycle in React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
