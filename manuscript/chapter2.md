@@ -253,13 +253,13 @@ Ahora vuelve a ejecutar tu aplicación y prueba el boton "Dismiss". Deberia de f
 
 ### Ejercicios:
 
-* read more about [the state and lifecycle in React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* leer mas sobre [El estado y el ciclo de vida de React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
-## Interactions with Forms and Events
+## Interacciones con Formularios y Eventos
 
-Let's add another interaction to experience forms and events in React. The interaction is a search functionality. The input of the search field should be used to filter your list based on the title property of an item.
+Añadamos otra interacción para experimentar formularios y eventos en React. La interacción es una funcionalidad de búsqueda. La entrada del campo de búsqueda se debe utilizar para filtrar la lista basada en la propiedad de título de un elemento.
 
-First you define your input field in your JSX.
+Primero defina su campo de entrada en su JSX.
 
 ~~~~~~~~
 class App extends Component {
@@ -281,9 +281,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-In the following scenario you will type into the field and filter the list temporary by the search term. To be able to filter the list, you need the value of the input field to update the state. But how do you access the value? You can use **synthetic events** in React to access the event payload.
+En el escenario siguiente, se escribirá en el campo y se filtrará la lista temporalmente por el término de búsqueda. Para poder filtrar la lista, necesitas el valor del campo de entrada para actualizar el estado. Pero, ¿cómo acceder al valor? Puede utilizar **eventos sintéticos** en  React para acceder a la carga útil del evento.
 
-Let's define an `onChange()` callback function for the input field.
+Vamos a definir una funcion callbakc `onChange()` para el campo de entrada.
 
 ~~~~~~~~
 class App extends Component {
@@ -306,7 +306,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The function is bound to the component and thus a class method again. You have to bind and define the method.
+La función está vinculada al componente y, por tanto, un método de clase de nuevo. Tienes que vincular y definir el métodos.
 
 ~~~~~~~~
 class App extends Component {
@@ -330,7 +330,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The method argument gives you access to the synthetic React event. The event has the value of the input field in its target object. Now you can manipulate the state for the search term:
+El argumento del método le da acceso al evento React sintético. El evento tiene el valor del campo de entrada en su objeto de destino. Ahora puedes manipular el estado para el término de búsqueda:
 
 ~~~~~~~~
 class App extends Component {
@@ -345,7 +345,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Additionally you have to define the initial state for the `searchTerm` in the constructor.
+Además hay que definir el estado inicial para el `searchTerm` en el constructor
 
 ~~~~~~~~
 class App extends Component {
@@ -366,7 +366,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Now you store the input value to your internal component state every time the value in the input field changes. However, the list doesn't update yet. You have to filter the list temporary based on the `searchTerm`. That's fairly simple. Before you map the list you can apply a filter on it. You have already used the built-in JavaScript filter functionality.
+Ahora almacena el valor de entrada en su estado de componente interno cada vez que el valor en el campo de entrada cambia. Sin embargo, la lista no se actualiza todavía. Deberá filtrar la lista temporalmente en función del `searchTerm`. Eso es bastante simple. Antes de asignar la lista puede aplicar un filtro en ella. Ya ha utilizado la funcionalidad de filtro JavaScript incorporada.
 
 ~~~~~~~~
 class App extends Component {
@@ -391,11 +391,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Let's approach the filter function in a different way this time. We want to define the filter argument - the function - outside of our ES6 class component. There we don't have access to the state of the component - thus we have no access to the `searchTerm` property to evaluate the filter condition. We have to pass the `searchTerm` to the filter function and have to return a new function to evaluate the condition. That's called a higher order function.
+Aproximemos la función de filtro de una manera diferente esta vez. Queremos definir el argumento del filtro - la funcion - fuera de nuestro componente de clase ES6. Allí no tenemos acceso al estado del componente - por lo tanto no tenemos acceso a la propiedad `searchTerm` para evaluar la condición del filtro. Tenemos que pasar el `searchTerm` a la función de filtro y tienen que devolver una nueva función para evaluar la condición. Eso se llama una función de orden superior.
 
-Normally I wouldn't mention higher order functions, but in a React book it makes total sense. It makes sense to know about higher order functions, because React deals with a concept called higher order components. You will get to know the concept later in the book. Now again, let's focus on the filter functionality.
+Normalmente no mencionaría las funciones de orden superior, pero en un libro de React tiene total sentido. Tiene sentido conocer las funciones de orden superior, Porque React trata con un concepto llamado componentes de orden superior. Conocerás el concepto más adelante en el libro. Ahora de nuevo, vamos a enfocarnos en la funcionalidad del filtro.
 
-First you have to define the higher order function outside of your class.
+Primero tienes que definir la función de orden superior fuera de tu clase.
 
 ~~~~~~~~
 function isSearched(searchTerm) {
@@ -411,7 +411,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The function takes the `searchTerm` and returns another function which takes an item. The returned function will be used to filter the list based on the condition defined in the function.
+La función toma el `searchTerm` y devuelve otra función que toma un elemento. La función devuelta se utilizará para filtrar la lista en función de la condición definida en la función.
 
 Let's define the condition.
 
@@ -430,11 +430,10 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The condition says multiple things. You filter the list only when a `searchTerm` is set. When a `searchTerm` is set, you match the incoming `searchTerm` pattern with the title of the item. You can do that with the built-in `includes` JavaScript functionality. Only when the pattern matches, you return true and the item stays in the list. But be careful with pattern matching: You shouldn't forget to lower case both strings. Otherwise there will be mismatches between a search term 'redux' and an item title 'Redux'.
+La condición dice varias cosas. Filtrar la lista sólo cuando esta establecido `searchTerm`. Cuando se establece un `searchTerm`, Usted coincide con el patrón `searchTerm` entrante con el título del elemento. Puedes hacerlo con la funcionalidad incorporada  en JavaScript `includes`. Sólo cuando el patrón coincide, devuelve true y el elemento permanece en la lista. Pero tenga cuidado con la coincidencia de patrones: No debes olvidar las minúsculas de ambas cadenas. De lo contrario, habrá desajustes entre un término de búsqueda 'redux' y un título de artículo 'Redux'.
 
-One thing is left to mention: We cheated a bit by using the built-in includes JavaScript functionality. It is already an ES6 feature. How would that look like in JavaScript ES5? You would use the `indexOf()` function to get the index of the item in the list. When the item is in the list, `indexOf()` will return a positive index.
+Una cosa queda por mencionar: Hemos engañado un poco utilizando la funcionalidad incluida en JavaScript. Ya es una característica ES6. ¿Cómo se vería eso en JavaScript ES5? Usted usaría la funcion `indexOf()` para obtener el índice del elemento en la lista. Cuando el elemento está en la lista, `indexOf()` devolverá un índice positivo.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 string.indexOf(pattern) !== -1
@@ -443,9 +442,8 @@ string.indexOf(pattern) !== -1
 string.includes(pattern)
 ~~~~~~~~
 
-Another neat refactoring can be done with an ES6 arrow function again. It makes the function more concise:
+Otra impecable refactorización se puede hacer de nuevo con una ES6 arrow function. Hace que la función sea más concisa:
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 function isSearched(searchTerm) {
@@ -459,9 +457,9 @@ const isSearched = (searchTerm) => (item) =>
   !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
 ~~~~~~~~
 
-One could argue which function is more readable. Personally I prefer the second one. The React ecosystem uses a lot of functional programming concepts. It happens often that you will use a function which returns a function (higher order functions). In ES6 you can express these more concisely with arrow functions.
+Uno podría discutir qué función es más legible. Personalmente prefiero la segundo. El ecosistema de React utiliza una gran cantidad de conceptos de programación funcional. Sucede a menudo que usted utilizará una función que devuelve una función (funciones de orden superior). En ES6 puedes expresarlas de forma más concisa con arrow functions.
 
-Last but not least, you have to use the defined `isSearched()` function to filter your list.
+Por último, pero no menos importante, tienes que usar la funcion definida `isSearched()` para filtrar tu lista.
 
 ~~~~~~~~
 class App extends Component {
@@ -486,18 +484,17 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The search functionality should work now. Try it.
+Ahora la funcionalidad de búsqueda debería funcionar ahora. Pruebala.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [React events](https://facebook.github.io/react/docs/handling-events.html)
-* read more about [higher order functions](https://en.wikipedia.org/wiki/Higher-order_function)
+* leer mas sobre [eventos React](https://facebook.github.io/react/docs/handling-events.html)
+* leer mas sobre [funciones de orden](https://en.wikipedia.org/wiki/Higher-order_function)
 
-## ES6 Destructuring
+## Desestructuración ES6
 
 There is a way in ES6 to access properties in objects and arrays easily. It's called destructuring. Compare the following snippet in JavaScript ES5 and ES6.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const user = {
   firstname: 'Robin',
@@ -517,7 +514,6 @@ console.log(firstname + ' ' + lastname);
 
 While you have to add an extra line each time you want to access an object property in ES5, you can do it in one line in ES6. Additionally you don't have to have duplicated property names. A best practice for readability is to use multilines when you destructure an object into multiple properties.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const {
   firstname,
@@ -527,7 +523,6 @@ const {
 
 The same goes for arrays. You can destructure them too, but keep it more readable with multilines.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const users = ['Robin', 'Andrew', 'Dan'];
 const [
@@ -557,7 +552,6 @@ Perhaps you have noticed that the state in the App component can get destructure
 
 You can do it the ES5 or ES6 way:
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 var searchTerm = this.state.searchTerm;
@@ -1167,7 +1161,6 @@ const Table = ({ list, pattern, onDismiss }) =>
 
 It is really inlined now. You could define the style objects outside of your elements to make it cleaner.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const largeColumn = {
   width: '40%',
