@@ -493,7 +493,7 @@ Ahora la funcionalidad de búsqueda debería funcionar ahora. Pruebala.
 
 ## Desestructuración ES6
 
-There is a way in ES6 to access properties in objects and arrays easily. It's called destructuring. Compare the following snippet in JavaScript ES5 and ES6.
+Hay una manera en ES6 para acceder a las propiedades en objetos y arrays fácilmente. Se llama desestructuración. Comparar el fragmento siguiente en JavaScript ES5 y ES6.
 
 ~~~~~~~~
 const user = {
@@ -512,7 +512,7 @@ console.log(firstname + ' ' + lastname);
 // output: Robin Wieruch
 ~~~~~~~~
 
-While you have to add an extra line each time you want to access an object property in ES5, you can do it in one line in ES6. Additionally you don't have to have duplicated property names. A best practice for readability is to use multilines when you destructure an object into multiple properties.
+Mientras tiene que agregar una línea extra cada vez que desee acceder a una propiedad de objeto en ES5, puedes hacerlo en una línea en ES6. Además, no es necesario tener nombres de propiedad duplicados. Una mejor práctica para la legibilidad es utilizar multilíneas cuando desestructuras un objeto en múltiples propiedades.
 
 ~~~~~~~~
 const {
@@ -521,7 +521,7 @@ const {
 } = user;
 ~~~~~~~~
 
-The same goes for arrays. You can destructure them too, but keep it more readable with multilines.
+Lo mismo ocurre con los arrays. También puede desestructurarlos, pero manténgalos más legibles con multilines..
 
 ~~~~~~~~
 const users = ['Robin', 'Andrew', 'Dan'];
@@ -535,8 +535,7 @@ console.log(userOne, userTwo, userThree);
 // output: Robin Andrew Dan
 ~~~~~~~~
 
-Perhaps you have noticed that the state in the App component can get destructured the same way. You can shorten the filter and map line of code.
-
+Quizás notaste que el estado en el componente App puede destructurarse de la misma manera.Puede acortar el filtro y la línea map del código
 ~~~~~~~~
   render() {
     const { searchTerm, list } = this.state;
@@ -550,7 +549,7 @@ Perhaps you have noticed that the state in the App component can get destructure
     );
 ~~~~~~~~
 
-You can do it the ES5 or ES6 way:
+Puede hacerlo de la manera ES5 o ES6:
 
 ~~~~~~~~
 // ES5
@@ -561,15 +560,15 @@ var list = this.state.list;
 const { searchTerm, list } = this.state;
 ~~~~~~~~
 
-But since the book uses JavaScript ES6 most of the time, you should stick to ES6.
+Pero como el libro utiliza JavaScript ES6 la mayor parte del tiempo, debes atenerse a ES6.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+* leer mas sobre [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-## Controlled Components
+## Componentes Controlados
 
-You already learned about the unidirectional data flow in React. The same law applies for the input field, which updates the state that in turn filters the list. The state was changed, the `render()` method runs again and uses the recent `searchTerm` state to apply the filter condition.
+Ya has aprendido sobre el flujo de datos unidireccional en React. The same law applies for the input field, which updates the state that in turn filters the list. The state was changed, the `render()` method runs again and uses the recent `searchTerm` state to apply the filter condition.
 
 But didn't we forget something in the input element? A HTML input tag comes with a `value` attribute. The value attribute usually has the value that is shown in the input field - in our case the `searchTerm` property. However, it seems like we don't need that in React.
 
