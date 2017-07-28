@@ -568,13 +568,13 @@ Pero como el libro utiliza JavaScript ES6 la mayor parte del tiempo, debes atene
 
 ## Componentes Controlados
 
-Ya has aprendido sobre el flujo de datos unidireccional en React. The same law applies for the input field, which updates the state that in turn filters the list. The state was changed, the `render()` method runs again and uses the recent `searchTerm` state to apply the filter condition.
+Ya has aprendido sobre el flujo de datos unidireccional en React. La misma ley se aplica al campo de entrada, que actualiza el estado que a su vez filtra la lista. El estado fue cambiado, el metodo `render()` e ejecuta de nuevo y utiliza el estado reciente `searchTerm` para aplicar la condición de filtro.
 
-But didn't we forget something in the input element? A HTML input tag comes with a `value` attribute. The value attribute usually has the value that is shown in the input field - in our case the `searchTerm` property. However, it seems like we don't need that in React.
+¿Pero no nos olvidamos de algo en el elemento de entrada? Una etiqueta de entrada HTML viene con un atributo `value`. El atributo valor normalmente tiene el valor que se muestra en el campo de entrada - en nuestro caso la propiedad `searchTerm`. Sin embargo, parece que no lo necesitamos en React.
 
-That's wrong. Form elements such as `<input>`, `<textarea>` and `<select>` hold their own state. They modify the value internally once someone changes it from the outside. In React that's called an **uncontrolled component**, because it handles its own state. In React you should make sure to make those elements **controlled components**.
+Eso está mal. Elemnetos de formulario como `<input>`, `<textarea>` y `<select>` mantiene su propio estado. Modifican el valor internamente una vez que alguien lo cambia desde el exterior. En React se les llama **componente no controlado**, porque maneja su propio estado. En React, debe asegurarse de que estos elementos son **componentes controlados**.
 
-How should you do that? You only have to set the value attribute of the input field. The value is already saved in the `searchTerm` state property.
+¿Cómo debes hacer eso? Sólo tiene que establecer el atributo de valor del campo de entrada. El valor ya está guardado en la propiedad de estado `searchTerm`.
 
 ~~~~~~~~
 class App extends Component {
@@ -599,19 +599,19 @@ class App extends Component {
 }
 ~~~~~~~~
 
-That's it. The unidirectional data flow cycle for the input field is self-contained now. The internal component state is the single source of truth for the input field.
+Eso es todo. El ciclo de flujo de datos unidireccional para el campo de entrada es autónomo ahora. El estado componente interno es la única fuente de verdad para el campo de entrada.
 
-The whole internal state management and unidirectional data flow might be new to you. But once you are used to it, it will be your natural flow to implement things in React. In general, React brought a novel pattern with the unidirectional data flow to the world of single page applications. It is adopted by several frameworks and libraries.
+Toda la gestión interna del estado y el flujo de datos unidireccional podría ser nuevo para usted. Pero una vez que esté acostumbrado a él, será su flujo natural para implementar las cosas en React. En general, React trajo un nuevo patrón con el flujo de datos unidireccional al mundo de las aplicaciones de una sola página. Es adoptado por varios frameworks y librerias.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [React forms](https://facebook.github.io/react/docs/forms.html)
+* leer mas sobre [React forms](https://facebook.github.io/react/docs/forms.html)
 
-## Split Up Components
+## Dividir Componentes
 
-You have one large App component now. It keeps growing and can be confusing eventually. You can start to split it up into chunks - smaller components.
+Ahora tienes un componente de App grande. Sigue creciendo y sera confuso eventualmente. Puede comenzar a dividirlo en pedazos - componentes más pequeños.
 
-Let's start to use a component for the search input and a component for the list of items.
+Comencemos a utilizar un componente para la entrada de búsqueda y un componente para la lista de elementos.
 
 ~~~~~~~~
 class App extends Component {
@@ -630,7 +630,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-You can pass those components properties which they can use themselves.
+Puede pasar las propiedades de los componentes que pueden utilizar ellos mismos.
 
 ~~~~~~~~
 class App extends Component {
@@ -656,9 +656,10 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Now you can define the components next to your App component. Those components will be ES6 class components as well. They render the same elements like before.
+Ahora puede definir los componentes junto a su componente App. Estos componentes serán también componentes de la clase ES6. Renderizan los mismos elementos como antes
+.
 
-The first one is the Search component.
+El primero es el componente de búsqueda.
 
 ~~~~~~~~
 class App extends Component {
@@ -681,7 +682,7 @@ class Search extends Component {
 }
 ~~~~~~~~
 
-The second one is the Table component.
+El segundo es el componente Tabla.
 
 ~~~~~~~~
 ...
@@ -703,7 +704,7 @@ class Table extends Component {
               <button
                 onClick={() => onDismiss(item.objectID)}
                 type="button"
-              >
+                >
                 Dismiss
               </button>
             </span>
@@ -715,14 +716,14 @@ class Table extends Component {
 }
 ~~~~~~~~
 
-Now you have three ES6 class components. Perhaps you have noticed the `this.props` object. The props - short form for properties - have all the values you have passed to the components when you used them in your App component. You could reuse these components somewhere else but pass them different values. They are reusable.
+Ahora tiene tres componentes de clase ES6. PTal vez usted ha notado el objeto `this.props`. Las props - abrevitura para las propiedades - tienen todos los valores que han pasado a los componentes cuando los utiliza en su componente App. Usted podría reutilizar estos componentes en otro lugar, pero pasarles diferentes valores. Son reutilizables.
 
-### Exercises:
+### Ejercicios:
 
-* figure out which components you could split up
-  * but don't do it now, otherwise you will run into conflicts in the next chapters
+* averiguar qué componentes podría dividir
+  * pero no lo haga ahora, de lo contrario se encontrará con conflictos en los próximos capítulos
 
-## Composable Components
+## Componentes Ensamblables
 
 There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above - which are unknown to the component itself - but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
 
