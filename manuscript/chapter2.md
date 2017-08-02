@@ -725,7 +725,7 @@ Ahora tiene tres componentes de clase ES6. PTal vez usted ha notado el objeto `t
 
 ## Componentes Ensamblables
 
-There is one more little property which is accessible in the props object: the `children` prop. You can use it to pass elements to your components from above - which are unknown to the component itself - but make it possible to compose components into each other. Let's see how this looks like when you only pass a text (string) as a child to the Search component.
+Hay una propiedad más pequeña que es accesible en el objeto props: la propiedad `hijo`. Puedes utilizarlo para pasar elementos a sus componentes desde arriba - Que son desconocidos para el componente mismo - pero hacen posible ensamblar componentes entre sí. Veamos cómo se ve esto cuando solo pasa un texto (string) como hijo al componente Search.
 
 ~~~~~~~~
 class App extends Component {
@@ -753,7 +753,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Now the Search component can destructure the children property from props. Then it can specify where the children should be displayed.
+Ahora, el componente de búsqueda puede desestructurar la propiedad children de props. A continuación, puede especificar dónde deben mostrarse los hijos.
 
 ~~~~~~~~
 class Search extends Component {
@@ -772,13 +772,13 @@ class Search extends Component {
 }
 ~~~~~~~~
 
-The "Search" text should be visible next to your input field now. When you use the Search component somewhere else, you can choose a different text if you like. After all it is not only text that you can pass as children. You can pass an element and element trees (which can be encapsulated by components again) as children. The children property makes it possible to weave components into each other.
+Ahora el texto "Search" debe estar visible al lado de su campo de entrada. Cuando utilice el componente Search en algún otro lugar, puedes elegir un texto diferente si tu quieres. Después de todo, no es sólo el texto que puede pasar como hijos. Puedes pasar un elemento y arboles de elementos (que puede ser encapsulado por los componentes de nuevo) como hijos. La propiedad hijo hace posible tejer componentes entre sí.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
+* leer mas sobre [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
 
-## Reusable Components
+## Componentes Reutilizables
 
 Reusable and composable components empower you to come up with capable component hierarchies. They are the foundation of your view layer. The last chapters mentioned often the term reusability. You can reuse the Table and Search components already. Not to forget the App component.
 
