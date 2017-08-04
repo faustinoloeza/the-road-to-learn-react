@@ -780,9 +780,9 @@ Ahora el texto "Search" debe estar visible al lado de su campo de entrada. Cuand
 
 ## Componentes Reutilizables
 
-Reusable and composable components empower you to come up with capable component hierarchies. They are the foundation of your view layer. The last chapters mentioned often the term reusability. You can reuse the Table and Search components already. Not to forget the App component.
+Los componentes reutilizables y componibles le permiten crear jerarquías de componentes capaces. Son la base de su capa de vista. Los últimos capítulos mencionan a menudo el término reutilización. Puedes volver a utilizar los componentes Table y Search. No olvides el componente App.
 
-Let's define one more reusable component - a Button component - which gets reused more often eventually.
+Vamos a definir un componente más reutilizable - un componente Button - que eventualmente se reutiliza más a menudo.
 
 ~~~~~~~~
 class Button extends Component {
@@ -806,9 +806,9 @@ class Button extends Component {
 }
 ~~~~~~~~
 
-It might seem redundant to declare such a component. You will use a `Button` instead of a `button`. It only spares the `type="button"`. Except for the type attribute you have to define everything else when you want to use the Button component. But you have to think about the long term investment here. Imagine you have several buttons in your application, but want to change an attribute, style or behavior for the button. Without the component you would have to refactor every button. Instead the Button component ensures to have only one single source of truth. One Button to refactor all buttons at once.
+Podría parecer superfluo declarar tal componente. Usaras un `Button` en lugar de un `button`. Sólo ahorra el `type="button"`. Excepto para el atributo type, debe definir todo lo demás cuando desee utilizar el componente Button. Pero hay que pensar en la inversión a largo plazo aquí. Imagine que tiene varios botones en su aplicación, pero desea cambiar un atributo, estilo o comportamiento para el botón. Sin el componente tendrías que refactorizar cada botón. En lugar del componente Button asegurate de tener una única fuente de verdad. Un botón para refactorizar todos los botones a la vez.
 
-Since you already have a button element, you can use the Button component instead. It omits the type attribute.
+Ya que ya tienes un elemento button, puedes utilizar el componente Button en su lugar. Omite el atributo de tipo.
 
 ~~~~~~~~
 class Table extends Component {
@@ -837,9 +837,9 @@ class Table extends Component {
 }
 ~~~~~~~~
 
-The Button component expects a `className` property in the props. But we didn't pass any `className` when the Button was used. It should be more explicit in the Button component that the `className` is optional.
+El componente Button espera una propiedad `className` property en las props. Pero no pasamos ninguna `className` cuando el Button fue usado. Debe ser más explícito en el componente Button que el `className` es opcional.
 
-You can use a JavaScript ES6 feature: the default parameter.
+Puedes utilizar una característica de JavaScript ES6: el parámetro predeterminado.
 
 ~~~~~~~~
 class Button extends Component {
@@ -855,25 +855,25 @@ class Button extends Component {
 }
 ~~~~~~~~
 
-Now, whenever there is no `className` property, the value will be an empty string.
+Ahora, siempre que no haya ninguna propiedad `className`, ll valor será una cadena vacía.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [ES6 default parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
+* leer mas sobre [ES6 default parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
 
-## Component Declarations
+## Declaraciones de componentes
 
-By now you have four ES6 class components. But you can do better. Let me introduce functional stateless components as alternative for ES6 class components. Before you will refactor your components, let's introduce the different types of components.
+Por ahora tienes cuatro componentes de clase ES6. Pero puedes hacerlo mejor. Permítanme introducir componentes funcionales sin estado como alternativa para componentes de clase ES6. Antes de refactorizar sus componentes, vamos a introducir los diferentes tipos de componentes.
 
-* **Functional Stateless Components:** These components are functions which get an input and return an output. The input is the props object. The output is a component instance. So far it is quite similar to an ES6 class component. However, functional stateless components are functions (functional) and they have no internal state (stateless). You cannot access the state with `this.state` because there is no `this` object. Additionally they have no lifecycle methods. You didn't learn about lifecycle methods yet, but you already used two: `constructor()` and `render()`. Keep this fact about functional stateless components in mind, when you arrive at the lifecycle methods chapter later on.
+* **Componentes funcionales sin esatdo:** Estos componentes son funciones que reciben una entrada y devuelven una salida. La entrada es el objeto props. La salida es una instancia de componente. Hasta ahora es bastante similar a un componente de clase ES6. Sin embargo, los componentes funcionales sin estados son funciones (funcional) y no tinene un estado interno (stateless). No puede acceder al estado con `this.state` porque no hay un objeto `this`. Además, no tienen métodos de ciclo de vida. Todavía no has aprendido los métodos del ciclo de vida, pero ya usaste dos: `constructor()` y `render()`. Mantenga este hecho en mente sobre los componentes funcionales sin estado, cuando llegue al capítulo de métodos de ciclo de vida más adelante.
 
-* **ES6 Class Components:** You already used this type of component declaration. In the class definition they extend from the React component. The `extend` hooks all the lifecycle methods - available in the React component API - to the component. As I mentioned, you already used two of them. Additionally you can store and manipulate state in ES6 class components.
+* **Componentes de clase ES6:** Ya utilizaste este tipo de declaración de componente. En la definición de clase se extienden desde el componente React. El `extend` engancha todos los métodos del ciclo de vida - disponibles en la API del componente React - al componente. Como he mencionado, ya usaste dos de ellos. Además, puedes almacenar y manipular el estado en componentes de clase ES6.
 
-* **React.createClass:** The component declaration was used in older versions of React and still in JavaScript ES5 React applications. But [Facebook declared it as deprecated](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html) in favor of ES6. They even added a [deprecation warning in version 15.5](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html). You will not use it in the book.
+* **React.createClass:** Esta declaración de componente se utilizó en versiones anteriores de React y aún se utiliza en aplicaciones de JavaScript ES5 React. Pero [Facebook  lo declaró obsoleto](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html) en favor de ES6. Incluso añadieron un [Advertencia de depreciación en la versión 15.5](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html). No lo usarás en el libro.
 
-But when to use functional stateless components over ES6 class components? A rule of thumb is to use functional stateless components when you don't need internal component state or component lifecycle methods. Usually you start to implement your components as functional stateless components. Once you need access to the state or lifecycle methods, you have to refactor it to an ES6 class component.
+Pero, ¿cuándo usar componentes funcionales sin estado sobre componentes de clase ES6? Una regla general es usar componentes funcionales sin estado cuando no se necesitan métodos de ciclo de vida de componentes o componentes internos. Por lo general, comienza a implementar sus componentes como componentes funcionales sin estado. Una vez que necesite acceder a los métodos de estado o de ciclo de vida, debe refactorizarlo a un componente de clase ES6.
 
-Let's get back to your application. The App component uses internal state. That's why it has to stay as an ES6 class component. But the other three of your ES6 class components are stateless without lifecycle methods. Let's refactor together the Search component to a stateless functional component. The Table and Button component refactoring will remain as your exercise.
+Volvamos a tu aplicación. El componente App utiliza el estado interno. Es por eso que tiene que permanecer como un componente de clase ES6. Pero los otros tres componentes de su clase ES6 son sin estado, sin métodos de ciclo de vida. Vamos a refactorizar juntos el componente de búsqueda a un componente funcional sin estado. La refactorización del componente Tabla y botón seran tu ejercicio.
 
 ~~~~~~~~
 function Search(props) {
@@ -890,7 +890,7 @@ function Search(props) {
 }
 ~~~~~~~~
 
-That's basically it. But you can do more code wise in a functional stateless component. You already know the ES6 destructuring. The best practice is to use it in the function signature to destructure the props.
+Básicamente eso es todo. Pero puedes hacer más código inteligente en un componente funcional sin estado. Ya conoces la desestructuración ES6. La mejor práctica es utilizarla en la firma de funciones para desestructurar las props.
 
 ~~~~~~~~
 function Search({ value, onChange, children }) {
@@ -906,7 +906,7 @@ function Search({ value, onChange, children }) {
 }
 ~~~~~~~~
 
-But it can get better. You know already that ES6 arrow functions allow you to keep your functions concise. You can remove the block body of the function. In a concise body an implicit return is attached thus you can remove the return statement. Since your functional stateless component is a function, you can keep it concise as well.
+Pero puede mejorar. Ya sabes que las funciones de flecha ES6 te permiten mantener tus funciones concisas. Puedes quitar el cuerpo del bloque de la función. En un cuerpo conciso un retorno implícito se adjunta así que usted puede quitar la declaración return. Dado que su componente funcional sin estado es una función, puede mantenerla concisa también.
 
 ~~~~~~~~
 const Search = ({ value, onChange, children }) =>
@@ -919,9 +919,8 @@ const Search = ({ value, onChange, children }) =>
   </form>
 ~~~~~~~~
 
-The last step was especially useful to enforce only to have props as input and an element as output. Nothing in between. Still, you could *do something* in between by using a block body in your ES6 arrow function.
+El último paso es especialmente útil para hacer cumplir sólo tener props como entrada y un elemento como salida. Nada en el medio. Sin embargo, podrías *hacer algo* usando un cuerpo del bloque en su función de la flecha ES6.
 
-{title="Code Playground",lang=javascript}
 ~~~~~~~~
 const Search = ({ value, onChange, children }) => {
 
@@ -939,7 +938,7 @@ const Search = ({ value, onChange, children }) => {
 }
 ~~~~~~~~
 
-But you don't need it for now. That's why you can keep the previous version without the block body.
+Pero no lo necesitas por ahora. Es por eso que puede mantener la versión anterior sin el cuerpo del bloque.
 
 Now you have one lightweight functional stateless component. Once you would need access to its internal component state or lifecycle methods, you would refactor it to an ES6 class component. In addition you saw how JavaScript ES6 can be used in React components to make them more elegant.
 
@@ -952,7 +951,6 @@ Now you have one lightweight functional stateless component. Once you would need
 
 Let's add some basic styling to your application and components. You can reuse the *src/App.css* and *src/index.css* files. These files should be already in your project since you bootstapped it with create-react-app. They should be imported in your *src/App.js* and *src/index.js* files too. I prepared some CSS which you can simply copy and paste to these files, but feel free to use your own style.
 
-{title="src/index.css",lang="css"}
 ~~~~~~~~
 body {
   color: #222;
