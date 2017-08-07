@@ -940,16 +940,16 @@ const Search = ({ value, onChange, children }) => {
 
 Pero no lo necesitas por ahora. Es por eso que puede mantener la versión anterior sin el cuerpo del bloque.
 
-Now you have one lightweight functional stateless component. Once you would need access to its internal component state or lifecycle methods, you would refactor it to an ES6 class component. In addition you saw how JavaScript ES6 can be used in React components to make them more elegant.
+Ahora usted tiene un componente funcional ligero sin estado. Una vez que necesitarás tener acceso a su estado de componente interno o métodos de ciclo de vida, lo refactorizarías a un componente de clase ES6. Además, usted vio cómo se puede usar JavaScript ES6 en los componentes React para hacerlos más elegantes.
 
-### Exercises:
+### Ejercicios:
 
-* refactor the Table and Button component to stateless functional components
-* read more about [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
+* Refactorizar el componente de tabla y botón a componentes funcionales sin estado
+* leer mas sobre [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
 
-## Styling Components
+## Estilización de Componentes
 
-Let's add some basic styling to your application and components. You can reuse the *src/App.css* and *src/index.css* files. These files should be already in your project since you bootstapped it with create-react-app. They should be imported in your *src/App.js* and *src/index.js* files too. I prepared some CSS which you can simply copy and paste to these files, but feel free to use your own style.
+Vamos a añadir un estilo básico a su aplicación y componentes. Puedes reutilizar los archivos *src/App.css* y *src/index.css*. Estos archivos deben estar ya en su proyecto desde que lo inició con create-react-app. Tambien deben ser importados en sus archivos *src/App.js* y *src/index.js*. He preparado algunos CSS que puede simplemente copiar y pegar en estos archivos, pero no dude en utilizar su propio estilo.
 
 ~~~~~~~~
 body {
@@ -998,7 +998,7 @@ button:hover {
 }
 ~~~~~~~~
 
-{title="src/App.css",lang="css"}
+
 ~~~~~~~~
 .page {
   margin: 20px;
@@ -1065,9 +1065,9 @@ button:hover {
 }
 ~~~~~~~~
 
-Now you can use the style in some of your components. Don't forget to use React `className` instead of `class` as HTML attribute.
+Ahora puede utilizar el estilo en algunos de sus componentes. No te olvides de utilizar `className` de React en lugar de `class` como atributo HTML.
 
-First, apply it in your App ES6 class component.
+Primero, aplícalo en tu componente de la clase App ES6.
 
 ~~~~~~~~
 class App extends Component {
@@ -1097,7 +1097,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Second, apply it in your Table functional stateless component.
+Segundo, aplíquelo en su componente funcional sin estado Tabla.
 
 ~~~~~~~~
 const Table = ({ list, pattern, onDismiss }) =>
@@ -1123,9 +1123,9 @@ const Table = ({ list, pattern, onDismiss }) =>
   </div>
 ~~~~~~~~
 
-Now you have styled your application and components with basic CSS. It should look decent. As you know, JSX mixes up HTML and JavaScript. One could argue to add CSS in the mix as well. That's called inline style. You can define JavaScript objects and pass them to the style attribute of an element.
+Ahora has estilizado tu aplicación y componentes con CSS basico. Debe lucir decente. Como sabes, JSX mezcla HTML y JavaScript. Uno podría discutir para agregar CSS en la mezcla también. Eso se llama estilo en línea. Puede definir objetos JavaScript y pasarlos al atributo de estilo de un elemento.
 
-Let's keep the Table column width flexible by using inline style.
+Mantengamos flexibles la anchura de columna de la tabla mediante el uso del estilo en línea.
 
 ~~~~~~~~
 const Table = ({ list, pattern, onDismiss }) =>
@@ -1157,7 +1157,7 @@ const Table = ({ list, pattern, onDismiss }) =>
   </div>
 ~~~~~~~~
 
-It is really inlined now. You could define the style objects outside of your elements to make it cleaner.
+Está realmente en línea ahora. Usted podría definir los objetos de estilo fuera de sus elementos para hacerlo más limpio..
 
 ~~~~~~~~
 const largeColumn = {
@@ -1173,20 +1173,18 @@ const smallColumn = {
 };
 ~~~~~~~~
 
-After that you could use it in your columns: `<span style={smallColumn}>`.
+Después de eso podríaa utilizarlo en tus columnass: `<span style={smallColumn}>`.
 
-In general, you will find different opinions and solutions for style in React. You used pure CSS and inline style now. It is sufficient to get started.
+En general, usted encontrará diferentes opiniones y soluciones para el estilo en React. Usaste puro estilo CSS y en línea ahora. Es suficiente para empezar.
 
-I don't want to be opinionated here, but I want to leave you some more options. You can read about them and apply them on your own. But if you are new to React, I would recommend to stick to pure CSS and inline style for now.
+No quiero ser dogmático aquí, pero quiero dejarte más opciones. Puedes leer sobre ellos y aplicarlos por su cuenta. Pero si eres nuevo en React, te recomendaría que te mantengas puro estilo CSS y en línea por ahora.
 
 * [radium](https://github.com/FormidableLabs/radium)
 * [aphrodite](https://github.com/khan/aphrodite)
 * [styled-components](https://github.com/styled-components/styled-components)
 * [CSS Modules](https://github.com/css-modules/css-modules)
 
-{pagebreak}
-
-You have learned the basics to write your own React application! Let's recap the last chapters:
+¡Usted ha aprendido los fundamentos para escribir su propia aplicación React! Repasemos los últimos capítulos:
 
 * React
   * use `this.state` and `setState()` to manage your internal component state
