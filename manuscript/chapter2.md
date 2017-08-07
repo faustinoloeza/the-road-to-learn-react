@@ -1184,23 +1184,23 @@ No quiero ser dogmático aquí, pero quiero dejarte más opciones. Puedes leer s
 * [styled-components](https://github.com/styled-components/styled-components)
 * [CSS Modules](https://github.com/css-modules/css-modules)
 
-¡Usted ha aprendido los fundamentos para escribir su propia aplicación React! Repasemos los últimos capítulos:
+¡Has aprendido los fundamentos para escribir tu propia aplicación React! Repasemos los últimos capítulos:
 
 * React
-  * use `this.state` and `setState()` to manage your internal component state
-  * use forms and events in React to add interactions
-  * unidirectional data flow is an important concept in React
-  * compose components with children and reusable components
-  * usage and implementation of ES6 class components and functional stateless components
-  * approaches to style your components
+  * usar `this.state` y `setState()` para administrar el estado del componente interno
+  * utilizar formularios y eventos en React para agregar interacciones
+  * flujo de datos unidireccional es un concepto importante en React
+  * componer componentes con hijos y componentes reutilizables
+  * uso e implementación de componentes de clase ES6 y componentes funcionales sin estado
+  * enfoques para diseñar sus componentes
 * ES6
-  * arrow functions with block and concise bodies to shorten your function declarations
-  * functions that are bound to a class are class methods
-  * destructuring of objects and arrays
-  * default parameters
+  * funciones de flecha con bloque y cuerpos concisos para acortar sus declaraciones de funciones
+  * las funciones que están enlazadas a una clase son métodos de clase
+  * desestructuración de objetos y matrices
+  * parámetros predeterminados
 * General
-  * higher order functions
+  * funciones de orden superior
 
-Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far. Additionally you can read more in the official [documentation](https://facebook.github.io/react/docs/installation.html).
+Una vez más tiene sentido tomar un descanso. Interiorizar lo aprendido y aplicarlo por tu cuenta. Puedes experimentar con el código fuente que has escrito hasta ahora. Además puede leer más en la  [documentación oficial](https://facebook.github.io/react/docs/installation.html).
 
-You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/2705dcd1a2027c4a6ecb8132428b399785afdfa5).
+Puedes encontrar el código fuente en el [repositorio oficial ](https://github.com/rwieruch/hackernews-client/tree/2705dcd1a2027c4a6ecb8132428b399785afdfa5).
