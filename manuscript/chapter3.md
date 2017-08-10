@@ -47,32 +47,31 @@ Después de todo, no es necesario conocer todos estos métodos de ciclo de vida 
 
 * **render()** - Este método del ciclo de vida es obligatorio y devuelve los elementos como una salida del componente. El método debe ser puro y por lo tanto no debe modificar el estado del componente. Recibe como entrada propiedades (props) y estados (state) y regresa un elemento.
 
-* **componentDidMount()** - Se llama una sola vez cuando el componente fue montado. Ese es el momento perfecto para realizar una solicitud asincrónica para obtener datos de una API. The fetched data would get stored in the internal component state to display it in the `render()` lifecycle method.
+* **componentDidMount()** - Se llama una sola vez cuando el componente fue montado. Ese es el momento perfecto para realizar una solicitud asincrónica para obtener datos de una API. Los datos obtenidos se almacenan en el estado interno del componente para mostrarlos en el metodo `render()`.
 
-* **componentWillReceiveProps(nextProps)** - The lifecycle method is called during an update lifecycle. As input you get the next props. You can diff the next props with the previous props (`this.props`) to apply a different behavior based on the diff. Additionally you can set state based on the next props.
+* **componentWillReceiveProps(nextProps)** - Se llama durante la actualización de un ciclo de vida. Como entrada recibirá las siguientes props . Puedes comparar las props siguientes con las anteriores (`this.props`) para aplicar un comportamiento diferente basado en la diferencia. Además, puede establecer el estado en función de las siguientes props.
 
-* **shouldComponentUpdate(nextProps, nextState)** - It is always called when the component updates due to state or props changes. You will use it in mature React applications for performance optimizations. Depending on a boolean that you return from this lifecycle method, the component and all its children will render or will not render on an update lifecycle. You can prevent the render lifecycle method of a component.
+* **shouldComponentUpdate(nextProps, nextState)** - Siempre se llama cuando el componente se actualiza debido a cambios de estado o props. Lo usarás en aplicaciones de React maduras para optimizaciones de rendimiento. Dependiendo de un booleano que regrese de este método de ciclo de vida, el componente y todos sus hijos se renderizaran o no en la actualización de un ciclo de vida. Puedes evitar que se ejecute el método de ciclo de vida render de un componente.
 
-* **componentWillUpdate(nextProps, nextState)** - The lifecycle method is immediately invoked before the `render()` method. You already have the next props and next state at your disposal. You can use the method as last opportunity to perform preparations before the render method gets executed. Note that you cannot trigger `setState()` anymore. If you want to compute state based on the next props, you have to use `componentWillReceiveProps()`.
+* **componentWillUpdate(nextProps, nextState)** - El método del ciclo de vida se invoca inmediatamente antes del método `render()`. Usted ya tiene las siguientes props y el próximo estado a su disposición. Puede utilizar el método como última oportunidad para realizar las preparaciones antes de ejecutar el método render. Tenga en cuenta que ya no puedes activar  `setState()`. Si deseas calcular el estado basado en las siguientes props, tienes que usar `componentWillReceiveProps()`.
 
-* **componentDidUpdate(prevProps, prevState)** - The lifecycle method is immediately invoked after the `render()` method. You can use it as opportunity to perform DOM operations or to perform further asynchronous requests.
+* **componentDidUpdate(prevProps, prevState)** - El método del ciclo de vida se invoca inmediatamente después del método `render()`. Puedes usarlo como oportunidad para realizar operaciones DOM o para realizar más solicitudes asíncronas.
 
-* **componentWillUnmount()** - It is called before you destroy your component. You can use the lifecycle method to perform any clean up tasks.
+* **componentWillUnmount()** - Se llama antes de destruir tu componente. Puedes utilizar el método del ciclo de vida para realizar tareas de limpieza.
 
-The `constructor()` and `render()` lifecycle methods are already used by you. These are the commonly used lifecycle methods for ES6 class components. Actually the `render()` method is required, otherwise you wouldn't return a component instance.
+Los métodos de ciclo de vida `constructor()` y `render()` ya están siendo utilizados por ti. Estos son los métodos de ciclo de vida comúnmente utilizados para componentes de clase ES6. En realidad, el método `render()` es necesario, de lo contrario no devolveria una instancia de componente.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [lifecycle methods in React](https://facebook.github.io/react/docs/react-component.html)
-* read more about [the state related to lifecycle methods in React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* leer mas sobre [lifecycle methods in React](https://facebook.github.io/react/docs/react-component.html)
+* leer mas sobre [the state related to lifecycle methods in React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
-## Fetching Data
+## Obteniendo Datos
 
-Now you are prepared to fetch data from the Hacker News API. I mentioned one lifecycle method that can be used to fetch data: `componentDidMount()`. You will use the native fetch API to perform the request.
+Ahora estás preparado para obtener datos de la API de Hacker News. He mencionado un método de ciclo de vida que se puede utilizar para obtener datos: `componentDidMount()`. Utilizará la API nativa para realizar la solicitud.
 
-Before we can use it, let's set up the url constants and default parameters to breakup the API request into chunks.
+Antes de poder usarlo, vamos a configurar las constantes de url y los parámetros por defecto para dividir la solicitud de API en partes.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
@@ -106,7 +105,6 @@ That will keep your url composition flexible in the future.
 
 But let's get to the API request where you will use the url. The whole data fetch process will be presented at once, but each step will get explained afterward.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 ...
 
@@ -166,7 +164,6 @@ Now you can use the fetched data instead of the artificial list of items. Howeve
 
 Let's use the result to render it. But we will prevent it from rendering anything - return null - when there is no result. Once the request to the API succeeded, the result is saved to the state and the App component will re-render with the updated state.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -211,7 +208,6 @@ Back to your application: The list of hits should be visible now. But the "Dismi
 
 The "Dismiss" button doesn't work because the `onDismiss()` method is not aware of the complex result object. Let's change that:
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 onDismiss(id) {
   const isNotId = item => item.objectID !== id;
@@ -245,7 +241,6 @@ const updatedResult = Object.assign({}, this.state.result, updatedHits);
 
 Now let's do it in the `onDismiss()` method:
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 onDismiss(id) {
   const isNotId = item => item.objectID !== id;
@@ -312,7 +307,6 @@ console.log(user);
 
 After all it can be used to replace ES5 `Object.assign()`.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 onDismiss(id) {
   const isNotId = item => item.objectID !== id;
@@ -341,7 +335,6 @@ The `result` object in the internal component state is null in the beginning. So
 
 But let's go one step further. It makes more sense to wrap the Table component, which is the only component that depends on the `result`, in an independent conditional rendering. Everything else should be displayed, even though there is no `result` yet. You can simply use a ternary expression in your JSX.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -392,7 +385,6 @@ console.log(result);
 
 In React you can make use of that behavior. If the condition is true, the expression after the logical `&&` operator will be the output. If the condition is false, React ignores and skips the expression. It is applicable in the Table conditional rendering case, because it should return a Table or nothing.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 { result &&
   <Table
@@ -418,7 +410,6 @@ When you use the search input field now, you will filter the list. That's happen
 
 You can define an `onSubmit()` method in your ES6 class component, which fetches results from the Hacker News API. It will be the same fetch like in your `componentDidMount()` lifecycle method. But it fetches it with the modified search term from the search field input.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -458,7 +449,6 @@ As alternative you could debounce (delay) the `onChange()` function and spare th
 
 First, pass the `onSearchSubmit()` method to your Search component.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -494,7 +484,6 @@ class App extends Component {
 
 Second, introduce a button in your Search component. The button has the `type="submit"` and the form uses its `onSubmit()` attribute to pass the `onSubmit()` method. You can reuse the children property, but this time it will be used as the content of the button.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 # leanpub-start-insert
 const Search = ({
@@ -518,7 +507,6 @@ const Search = ({
 
 In the Table you can remove the filter functionality, because there will be no client-side filter (search) anymore. The result comes directly from the Hacker News API after you have clicked the "Search" button.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -558,7 +546,6 @@ const Table = ({ list, onDismiss }) =>
 
 When you try to search now, you will notice that the browser reloads. That's a native browser behavior for a submit callback in a form. In React you will often come across the `preventDefault()` event method to suppress the native browser behavior.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 # leanpub-start-insert
 onSearchSubmit(event) {
@@ -583,7 +570,6 @@ Did you have a closer look at the returned data structure yet? The [Hacker News 
 
 Let's extend the composable API constants that so it can deal with paginated data.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 const DEFAULT_QUERY = 'redux';
 # leanpub-start-insert
@@ -610,7 +596,6 @@ console.log(url);
 
 The `fetchSearchTopstories()` method will take the page as second argument. The `componentDidMount()` and `onSearchSubmit()` methods take the `DEFAULT_PAGE` for the initial API calls. They should fetch the first page on the first request. Every additional fetch should fetch the next page.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -647,7 +632,6 @@ class App extends Component {
 
 Now you can use the current page from the API response in `fetchSearchTopstories()`. You can use this method in a button to fetch more stories on a button click. Let's use the Button to fetch more paginated data from the Hacker News API. You only need to define the `onClick()` function which takes the current search term and the next page (current page + 1).
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -685,7 +669,6 @@ You should make sure to default to page 0 when there is no result.
 
 There is one step missing. You fetch the next page of data, but it will overwrite your previous page of data. You want to concatenate the old and new data. Let's adjust the functionality to add the new data rather than to overwrite it.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 setSearchTopstories(result) {
 # leanpub-start-insert
@@ -717,7 +700,6 @@ Fourth, you set the merged hits and page in the internal component state.
 
 You can make one last adjustment. When you try the "More" button it only fetches a few list items. The API url can be extended to fetch more list items with each request. Again you can add more composable path constants.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_PAGE = 0;
@@ -736,7 +718,6 @@ const PARAM_HPP = 'hitsPerPage=';
 
 Now you can use the constants to extend the API url.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 fetchSearchTopstories(searchTerm, page) {
 # leanpub-start-insert
@@ -789,7 +770,6 @@ results: {
 
 Let's implement a client-side cache with React `setState()`. First, rename the `result` object to `results` in the initial component state. Second, define a temporary `searchKey` which is used to store each `result`.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -815,7 +795,6 @@ class App extends Component {
 
 The `searchKey` has to be set before each request is made. It reflects the `searchTerm`. You might wonder: Why don't we use the `searchTerm` in the first place? The `searchTerm` is a fluctuant variable, because it gets changed every time you type into the Search input field. However, in the end you will need a non fluctuant variable. It determines the recent submitted search term to the API and can be used to retrieve the correct result from the map of results. It is a pointer to your current result in the cache.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 componentDidMount() {
   const { searchTerm } = this.state;
@@ -837,7 +816,6 @@ onSearchSubmit(event) {
 
 Now you have to adjust the functionality where the result is stored to the internal component state. It should store each result by `searchKey`.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -881,7 +859,6 @@ Second, the old hits have to get merged with the new hits as before. But this ti
 
 Third, a new result can be set in the `results` map in the state. Let's examine the `results` object in `setState()`.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 results: {
   ...results,
@@ -895,7 +872,6 @@ The upper part needs to object spread all other results by `searchKey` in the st
 
 Now you store all results by search term. That's the first step to enable your cache. In the next step you can retrieve the result depending on the search term from your map of results.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -952,7 +928,6 @@ The search functionality should work again. It stores all results from the Hacke
 
 Additionally the `onDismiss()` method needs to get improved. It still deals with the `result` object. Now it has to deal with multiple `results`.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
   onDismiss(id) {
 # leanpub-start-insert
@@ -978,7 +953,6 @@ The "Dismiss" button should work again.
 
 However, nothing stops the application from sending an API request on each search submit. Even though there might be already a result, there is no check that prevents the request. The cache functionality is not complete yet. The last step would be to prevent the request when a result is available in the cache.
 
-{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
