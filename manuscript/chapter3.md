@@ -192,19 +192,17 @@ Regresa a tu aplicación: La lista de hits debe ser visible ahor. Pero el boton 
 * leer mas sobre [the native fetch API](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
 * experimenta con [Hacker News API](https://hn.algolia.com/api)
 
-## ES6 Spread Operators
+## ES6 Operadores de propagación
 
 The "Dismiss" button doesn't work because the `onDismiss()` method is not aware of the complex result object. Let's change that:
 
 ~~~~~~~~
 onDismiss(id) {
   const isNotId = item => item.objectID !== id;
-# leanpub-start-insert
   const updatedHits = this.state.result.hits.filter(isNotId);
   this.setState({
     ...
   });
-# leanpub-end-insert
 }
 ~~~~~~~~
 
@@ -212,7 +210,6 @@ But what happens in `setState()` now? Unfortunately the result is a complex obje
 
 One approach could be to mutate the hits in the result object. I will demonstrate it, but we won't do it that way.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 this.state.result.hits = updatedHits;
 ~~~~~~~~
@@ -221,7 +218,6 @@ React embraces functional programming. Thus you shouldn't mutate an object (or m
 
 Let's do it in JavaScript ES5. `Object.assign()` takes as first argument a target object. All following arguments are source objects. These objects are merged into the target object. The target object can be an empty object. It embraces immutability, because no source object gets mutated. It would look similar to the following:
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const updatedHits = { hits: updatedHits };
 const updatedResult = Object.assign({}, this.state.result, updatedHits);
@@ -234,9 +230,7 @@ onDismiss(id) {
   const isNotId = item => item.objectID !== id;
   const updatedHits = this.state.result.hits.filter(isNotId);
   this.setState({
-# leanpub-start-insert
     result: Object.assign({}, this.state.result, { hits: updatedHits })
-# leanpub-end-insert
   });
 }
 ~~~~~~~~
@@ -245,7 +239,6 @@ That's it in JavaScript ES5. There is a simpler solution in ES6 and future JavaS
 
 Let's examine the ES6 **array** spread operator even though you don't need it yet.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const userList = ['Robin', 'Andrew', 'Dan'];
 const additionalUser = 'Jordan';
@@ -271,7 +264,6 @@ Now let's have a look at the object spread operator. It is not ES6! It is a [pro
 
 Basically it is the same as the JavaScript ES6 array spread operator but with objects. It copies each key value pair into a new object.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
 const age = 28;
@@ -283,7 +275,6 @@ console.log(user);
 
 Multiple objects can be spread like in the array spread example.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
 const userAge = { age: 28 };
@@ -300,9 +291,7 @@ onDismiss(id) {
   const isNotId = item => item.objectID !== id;
   const updatedHits = this.state.result.hits.filter(isNotId);
   this.setState({
-# leanpub-start-insert
     result: { ...this.state.result, hits: updatedHits }
-# leanpub-end-insert
   });
 }
 ~~~~~~~~
@@ -328,10 +317,8 @@ class App extends Component {
 
   ...
 
-  render() {
-# leanpub-start-insert
+  render() {t
     const { searchTerm, result } = this.state;
-# leanpub-end-insert
     return (
       <div className="page">
         <div className="interactions">
@@ -342,7 +329,6 @@ class App extends Component {
             Search
           </Search>
         </div>
-# leanpub-start-insert
         { result
           ? <Table
             list={result.hits}
@@ -351,7 +337,6 @@ class App extends Component {
           />
           : null
         }
-# leanpub-end-insert
       </div>
     );
   }
@@ -360,7 +345,6 @@ class App extends Component {
 
 That's your second option to express a conditional rendering. A third option is the logical `&&` operator. In JavaScript a `true && 'Hello World'` always evaluates to 'Hello World'. A `false && 'Hello World'` always evaluates to false.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const result = true && 'Hello World';
 console.log(result);
@@ -412,20 +396,16 @@ class App extends Component {
     this.setSearchTopstories = this.setSearchTopstories.bind(this);
     this.fetchSearchTopstories = this.fetchSearchTopstories.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
-# leanpub-start-insert
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
-# leanpub-end-insert
     this.onDismiss = this.onDismiss.bind(this);
   }
 
   ...
 
-# leanpub-start-insert
   onSearchSubmit() {
     const { searchTerm } = this.state;
     this.fetchSearchTopstories(searchTerm);
   }
-# leanpub-end-insert
 
   ...
 }
@@ -450,9 +430,7 @@ class App extends Component {
           <Search
             value={searchTerm}
             onChange={this.onSearchChange}
-# leanpub-start-insert
             onSubmit={this.onSearchSubmit}
-# leanpub-end-insert
           >
             Search
           </Search>
@@ -473,7 +451,6 @@ class App extends Component {
 Second, introduce a button in your Search component. The button has the `type="submit"` and the form uses its `onSubmit()` attribute to pass the `onSubmit()` method. You can reuse the children property, but this time it will be used as the content of the button.
 
 ~~~~~~~~
-# leanpub-start-insert
 const Search = ({
   value,
   onChange,
@@ -490,7 +467,6 @@ const Search = ({
       {children}
     </button>
   </form>
-# leanpub-end-insert
 ~~~~~~~~
 
 In the Table you can remove the filter functionality, because there will be no client-side filter (search) anymore. The result comes directly from the Hacker News API after you have clicked the "Search" button.
@@ -507,10 +483,8 @@ class App extends Component {
         ...
         { result &&
           <Table
-# leanpub-start-insert
             list={result.hits}
             onDismiss={this.onDismiss}
-# leanpub-end-insert
           />
         }
       </div>
@@ -520,13 +494,9 @@ class App extends Component {
 
 ...
 
-# leanpub-start-insert
 const Table = ({ list, onDismiss }) =>
-# leanpub-end-insert
   <div className="table">
-# leanpub-start-insert
     { list.map(item =>
-# leanpub-end-insert
       ...
     )}
   </div>
@@ -535,14 +505,10 @@ const Table = ({ list, onDismiss }) =>
 When you try to search now, you will notice that the browser reloads. That's a native browser behavior for a submit callback in a form. In React you will often come across the `preventDefault()` event method to suppress the native browser behavior.
 
 ~~~~~~~~
-# leanpub-start-insert
 onSearchSubmit(event) {
-# leanpub-end-insert
   const { searchTerm } = this.state;
   this.fetchSearchTopstories(searchTerm);
-# leanpub-start-insert
   event.preventDefault();
-# leanpub-end-insert
 }
 ~~~~~~~~
 
@@ -560,21 +526,16 @@ Let's extend the composable API constants that so it can deal with paginated dat
 
 ~~~~~~~~
 const DEFAULT_QUERY = 'redux';
-# leanpub-start-insert
 const DEFAULT_PAGE = 0;
-# leanpub-end-insert
 
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
-# leanpub-start-insert
 const PARAM_PAGE = 'page=';
-# leanpub-end-insert
 ~~~~~~~~
 
 Now you can use these constants to add the page parameter to your API request.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}`;
 
@@ -591,15 +552,11 @@ class App extends Component {
 
   componentDidMount() {
     const { searchTerm } = this.state;
-# leanpub-start-insert
     this.fetchSearchTopstories(searchTerm, DEFAULT_PAGE);
-# leanpub-end-insert
   }
 
-# leanpub-start-insert
   fetchSearchTopstories(searchTerm, page) {
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`)
-# leanpub-end-insert
       .then(response => response.json())
       .then(result => this.setSearchTopstories(result))
       .catch(e => e);
@@ -607,9 +564,7 @@ class App extends Component {
 
   onSearchSubmit(event) {
     const { searchTerm } = this.state;
-# leanpub-start-insert
     this.fetchSearchTopstories(searchTerm, DEFAULT_PAGE);
-# leanpub-end-insert
     event.preventDefault();
   }
 
@@ -627,9 +582,7 @@ class App extends Component {
 
   render() {
     const { searchTerm, result } = this.state;
-# leanpub-start-insert
     const page = (result && result.page) || 0;
-# leanpub-end-insert
     return (
       <div className="page">
         <div className="interactions">
@@ -640,13 +593,11 @@ class App extends Component {
             onDismiss={this.onDismiss}
           />
         }
-# leanpub-start-insert
         <div className="interactions">
           <Button onClick={() => this.fetchSearchTopstories(searchTerm, page + 1)}>
             More
           </Button>
         </div>
-# leanpub-end-insert
       </div>
     );
   }
@@ -659,7 +610,6 @@ There is one step missing. You fetch the next page of data, but it will overwrit
 
 ~~~~~~~~
 setSearchTopstories(result) {
-# leanpub-start-insert
   const { hits, page } = result;
 
   const oldHits = page !== 0
@@ -674,7 +624,6 @@ setSearchTopstories(result) {
   this.setState({
     result: { hits: updatedHits, page }
   });
-# leanpub-end-insert
 }
 ~~~~~~~~
 
@@ -691,26 +640,20 @@ You can make one last adjustment. When you try the "More" button it only fetches
 ~~~~~~~~
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_PAGE = 0;
-# leanpub-start-insert
 const DEFAULT_HPP = '100';
-# leanpub-end-insert
 
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
-# leanpub-start-insert
 const PARAM_HPP = 'hitsPerPage=';
-# leanpub-end-insert
 ~~~~~~~~
 
 Now you can use the constants to extend the API url.
 
 ~~~~~~~~
 fetchSearchTopstories(searchTerm, page) {
-# leanpub-start-insert
   fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-# leanpub-end-insert
     .then(response => response.json())
     .then(result => this.setSearchTopstories(result))
     .catch(e => e);
@@ -731,7 +674,6 @@ In order to have a client cache for each result, you have to store multiple `res
 
 At the moment your result in the component state looks similar to the following:
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 result: {
   hits: [ ... ],
@@ -765,10 +707,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-# leanpub-start-insert
       results: null,
       searchKey: '',
-# leanpub-end-insert
       searchTerm: DEFAULT_QUERY,
     };
 
@@ -786,17 +726,13 @@ The `searchKey` has to be set before each request is made. It reflects the `sear
 ~~~~~~~~
 componentDidMount() {
   const { searchTerm } = this.state;
-# leanpub-start-insert
   this.setState({ searchKey: searchTerm });
-# leanpub-end-insert
   this.fetchSearchTopstories(searchTerm, DEFAULT_PAGE);
 }
 
 onSearchSubmit(event) {
   const { searchTerm } = this.state;
-# leanpub-start-insert
   this.setState({ searchKey: searchTerm });
-# leanpub-end-insert
   this.fetchSearchTopstories(searchTerm, DEFAULT_PAGE);
   event.preventDefault();
 }
@@ -811,13 +747,11 @@ class App extends Component {
 
   setSearchTopstories(result) {
     const { hits, page } = result;
-# leanpub-start-insert
     const { searchKey, results } = this.state;
 
     const oldHits = results && results[searchKey]
       ? results[searchKey].hits
       : [];
-# leanpub-end-insert
 
     const updatedHits = [
       ...oldHits,
@@ -825,12 +759,10 @@ class App extends Component {
     ];
 
     this.setState({
-# leanpub-start-insert
       results: {
         ...results,
         [searchKey]: { hits: updatedHits, page }
       }
-# leanpub-end-insert
     });
   }
 
@@ -866,7 +798,6 @@ class App extends Component {
   ...
 
   render() {
-# leanpub-start-insert
     const {
       searchTerm,
       results,
@@ -885,22 +816,17 @@ class App extends Component {
       results[searchKey].hits
     ) || [];
 
-# leanpub-end-insert
     return (
       <div className="page">
         <div className="interactions">
           ...
         </div>
-# leanpub-start-insert
         <Table
           list={list}
           onDismiss={this.onDismiss}
         />
-# leanpub-end-insert
         <div className="interactions">
-# leanpub-start-insert
           <Button onClick={() => this.fetchSearchTopstories(searchKey, page + 1)}>
-# leanpub-end-insert
             More
           </Button>
         </div>
@@ -918,13 +844,10 @@ Additionally the `onDismiss()` method needs to get improved. It still deals with
 
 ~~~~~~~~
   onDismiss(id) {
-# leanpub-start-insert
     const { searchKey, results } = this.state;
     const { hits, page } = results[searchKey];
-# leanpub-end-insert
 
     const isNotId = item => item.objectID !== id;
-# leanpub-start-insert
     const updatedHits = hits.filter(isNotId);
 
     this.setState({
@@ -933,7 +856,6 @@ Additionally the `onDismiss()` method needs to get improved. It still deals with
         [searchKey]: { hits: updatedHits, page }
       }
     });
-# leanpub-end-insert
   }
 ~~~~~~~~
 
@@ -948,9 +870,7 @@ class App extends Component {
 
     ...
 
-# leanpub-start-insert
     this.needsToSearchTopstories = this.needsToSearchTopstories.bind(this);
-# leanpub-end-insert
     this.setSearchTopstories = this.setSearchTopstories.bind(this);
     this.fetchSearchTopstories = this.fetchSearchTopstories.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -958,24 +878,20 @@ class App extends Component {
     this.onDismiss = this.onDismiss.bind(this);
   }
 
-# leanpub-start-insert
   needsToSearchTopstories(searchTerm) {
     return !this.state.results[searchTerm];
   }
-# leanpub-end-insert
 
   ...
 
   onSearchSubmit(event) {
     const { searchTerm } = this.state;
     this.setState({ searchKey: searchTerm });
-# leanpub-start-insert
 
     if (this.needsToSearchTopstories(searchTerm)) {
       this.fetchSearchTopstories(searchTerm, DEFAULT_PAGE);
     }
 
-# leanpub-end-insert
     event.preventDefault();
   }
 
@@ -985,8 +901,6 @@ class App extends Component {
 ~~~~~~~~
 
 Now your client makes a request to the API only once although you search for a search term twice. Even paginated data with several pages gets cached that way, because you always save the last page for each result in the `results` map.
-
-{pagebreak}
 
 You have learned to interact with an API in React! Let's recap the last chapters:
 
