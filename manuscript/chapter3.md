@@ -76,13 +76,11 @@ Antes de poder usarlo, vamos a configurar las constantes de url y los parámetro
 import React, { Component } from 'react';
 import './App.css';
 
-# leanpub-start-insert
 const DEFAULT_QUERY = 'redux';
 
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
-# leanpub-end-insert
 
 ...
 ~~~~~~~~
@@ -182,17 +180,17 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Repasemos lo que sucede durante el ciclo de vida del componente. Your component gets initialized by the constructor. After that it renders for the first time. But you prevent it from displaying, because the result is empty. Then the `componentDidMount()` lifecycle method runs. In that method you fetch the data from the Hacker News API asynchronously. Once the data arrives, it changes your internal component state. After that the update lifecycle comes into play. The component runs the `render()` method again, but this time with populated data in your internal component state. The component and thus the Table component with its content gets re-rendered.
+Repasemos lo que sucede durante el ciclo de vida del componente. El componente es inicializa por el constructor. Después de que se renderiza por primera vez. Pero evitas que muestre, porque el resultado está vacío. Entonces se ejecuta el metodo `componentDidMount()`. En ese método, obtienes los datos de la API de Hacker News de forma asincrónica. Una vez que los datos llegan, cambia el estado interno del componente. Después de eso, el ciclo de vida de la actualización entra en juego. El componente ejecuta de nuevo el método  `render()`, pero esta vez con datos poblados en su estado interno del componente. El componente y, por tanto, el componente Tabla con su contenido se vuelve a renderizar.
 
-You used the native fetch API that is supported by most browsers to perform an asynchronous request to an API. The *create-react-app* configuration makes sure that it is supported in every browser. There are third party node packages that you can use to substitute the native fetch API: [superagent](https://github.com/visionmedia/superagent) and [axios](https://github.com/mzabriskie/axios).
+Utilizó la API de recuperación nativa que es compatible con la mayoría de los navegadores para realizar una solicitud asincrónica a una API. La configuración de *create-react-app* garantiza su compatibilidad con todos los navegadores. Hay paquetes de terceros de node que puedes usar para sustituir la API de búsqueda nativa: [superagent](https://github.com/visionmedia/superagent) y [axios](https://github.com/mzabriskie/axios).
 
-Back to your application: The list of hits should be visible now. But the "Dismiss" button is broken. We will fix that in the next chapter.
+Regresa a tu aplicación: La lista de hits debe ser visible ahor. Pero el boton "Dismiss" no funciona. Lo arreglaremos en el siguiente capitulo.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [ES6 template strings](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals)
-* read more about [the native fetch API](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
-* experiment with the [Hacker News API](https://hn.algolia.com/api)
+* leer mas sobre [ES6 plantilas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings)
+* leer mas sobre [the native fetch API](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
+* experimenta con [Hacker News API](https://hn.algolia.com/api)
 
 ## ES6 Spread Operators
 
