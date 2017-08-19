@@ -219,7 +219,7 @@ Ahora conocerás a JSX. Es la sintaxis de React. Como he mencionado antes, *crea
 
 El único archivo que tocará al principio será el archivo *src/App.js*.
 
-~~~~~~~~
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -241,7 +241,7 @@ class App extends Component {
 }
 
 export default App;
-~~~~~~~~
+```
 
 No te dejes confundir por las declaraciones de import/export y declaracion de clases. Estas características son JavaScript ES6. Volveremos a verlas en un capítulo posterior.
 

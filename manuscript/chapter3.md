@@ -194,7 +194,7 @@ Regresa a tu aplicación: La lista de hits debe ser visible ahor. Pero el boton 
 
 ## ES6 Operadores de propagación
 
-The "Dismiss" button doesn't work because the `onDismiss()` method is not aware of the complex result object. Let's change that:
+El botón "Dismiss" no funciona porque el metodo `onDismiss()` no tiene conocimiento del objeto complejo resultante. Cambiemos eso:
 
 ~~~~~~~~
 onDismiss(id) {
@@ -206,9 +206,9 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-But what happens in `setState()` now? Unfortunately the result is a complex object. The list of hits is only one of multiple properties in the object. However, only the list gets updated, when an item gets removed in the result object, while the other properties stay the same.
+Pero, ¿qué pasa en `setState()` ahora? Desafortunadamente el resultado es un objeto complejo. La lista de hits es sólo una de las múltiples propiedades del objeto. Sin embargo, sólo la lista se actualiza, cuando un elemento se quita en el objeto resultante, mientras que las otras propiedades permanecen igual.
 
-One approach could be to mutate the hits in the result object. I will demonstrate it, but we won't do it that way.
+Un enfoque podría ser mutar los hits en el objeto resultante. Lo demostraré, pero no lo haremos de esa manera.
 
 ~~~~~~~~
 this.state.result.hits = updatedHits;
@@ -250,7 +250,6 @@ console.log(allUsers);
 
 The `allUsers` variable is a completely new array. The other variables `userList` and `additionalUser` stay the same. You can even merge two arrays that way into a new array.
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const oldUsers = ['Robin', 'Andrew'];
 const newUsers = ['Dan', 'Jordan'];
