@@ -114,10 +114,10 @@ La primera es usar un CDN. Eso puede sonar más complicado de lo que es. Un CDN 
 
 Como usar un CDN para comenzar con React? Puedes insertar la etiqueta `<script>` en su código HTML que apunta a una url de CDN. Para empezar en React necesitas dos archivos (librerías): *react* y *react-dom*.
 
-~~~~~~~~
+```js
 <script src="https://unpkg.com/react@15/dist/react.js"></script>
 <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-~~~~~~~~
+```
 
 Pero por que deberías usar un CDN cuando tienes npm para instalar paquetes node (librerías)?
 
@@ -192,7 +192,7 @@ Al lado de la carpeta *src/* encontrarás el archivo *package.json*  y la carpet
 
 El proyecto  *create-react-app* viene con los siguientes scripts npm para su línea de comandos:
 
-~~~~~~~~
+```js
 // Ejecuta la aplicacion en http://localhost:3000
 npm start
 
@@ -201,7 +201,7 @@ npm test
 
 // Crea la aplicación para la producción
 npm run build
-~~~~~~~~
+```
 
 Los scripts también se definen en el *package.json*. Tu aplicación React esta inicializada.
 
