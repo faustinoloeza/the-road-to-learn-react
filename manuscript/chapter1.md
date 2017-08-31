@@ -1,12 +1,12 @@
 # Introducción a React
 
-El capitulo te da una introducción a React. Podrías preguntarte: ¿Por que debo aprender React en primer lugar? El capitulo podría darte la respuesta a esa pregunta. Después te sumergirás en el ecosistema iniciando tu primera aplicación React. En el camino se te dará una introducción a JSX y ReactDOM. Preparate para tu primer componente React.
+El capitulo te da una introducción a React. Podrías preguntarte: ¿Por qué debo aprender React en primer lugar? El capítulo podría darte la respuesta a esa pregunta. Después te sumergiras en el ecosistema iniciando tu primera aplicación React. En el camino se te dará una introducción a JSX y ReactDOM. Prepárate para tu primer componente React.
 
 ## Hola, mi nombre es React.
 
-**¿Por qué deberías molestarte en aprender React?** En los últimos años las single page aplications ([SPA](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de frameworks SPA. Cuando consideras las fechas de lanzamiento, la mayoría de ellos están en la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**¿Por qué deberías molestarte en aprender React?** En los últimos años las single page aplications ([SPA](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de frameworks SPA. Cuando consideramos las fechas de lanzamiento, la mayoría de ellos están en la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
-La versión inicial de React fue creada en 2013 por Facebook. React no es un framework SPA, pero si una libreria para la vista. Es la V en [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador) (modelo vista controlador). Sólo te permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
+La versión inicial de React fue creada en 2013 por Facebook. React no es un framework SPA, pero sí una librería para la vista. Es la V en [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador) (modelo vista controlador). Sólo te permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
 
 Pero por que deberías considerar usar React sobre la primera generación de Frameworks SPA? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React solo te ayuda a construir tu capa de vista. Es una biblioteca y no un Framework. La idea detrás de ella: Su vista es una jerarquía de componentes ensamblables.
 
@@ -16,7 +16,7 @@ Primera puedes aprender los bloques de construcción paso a paso. No tienes que 
 
 En segundo lugar todos los bloques de construcción son intercambiables. Esto hace que el ecosistema alrededor de React sea un lugar muy innovador. Múltiples soluciones están compitiendo entre sí. Puedes elegir la solución más atractiva para ti y tu caso de uso.
 
-La primera generación de Frameworks SPA llegó a nivel empresarial. Son más rígidos. React permanece innovador y se adopto por varias empresas líderes de pensamiento tecnológico como [Airbnb, Netflix y por supuesto Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). Todos ellos invierten en el futuro de React y se conforman con React y su propio ecosistema.
+La primera generación de Frameworks SPA llegó a nivel empresarial. Son más rígidos. React permanece innovador y se adoptó por varias empresas líderes de pensamiento tecnológico como [Airbnb, Netflix y por supuesto Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). Todos ellos invierten en el futuro de React y se conforman con React y su propio ecosistema.
 
 React es probablemente una de las mejores opciones para la construcción de aplicaciones de una sola página hoy en día. Sólo ofrece la capa de vista, pero el ecosistema de React es un framework completo, flexible e intercambiable . React tiene una API simple, un ecosistema impresionante y una gran comunidad. Puedes leer acerca de mis experiencias del por qué me mudé de Angular a React. Recomiendo encarecidamente tener una comprensión de por qué elegiría React sobre otro Framework o biblioteca. Después de todo, todo el mundo está interesado en experimentar a donde nos guiará React en 2017 y más allá.
 
@@ -26,15 +26,15 @@ React es probablemente una de las mejores opciones para la construcción de apli
 
 ## Requerimientos
 
-Antes de empezar a leer el libro, debe familiarizarse con HTML, CSS y JavaScript (ES5). El libro enseñará JavaScript ES6 y más allá. Si vienes de un marco o biblioteca de SPA diferente, ya deberías estar familiarizado con los conceptos básicos. Si acaba de comenzar en el desarrollo web, debería sentirse cómodo con HTML, CSS y JavaScript ES5 para aprender React. Les animo a que se unan al canal oficial [Slack ](https://slack-the-road-to-learn-react.wieruch.com/) para obtener el libro o ayudar a otros .
+Antes de empezar a leer el libro, debe familiarizarse con HTML, CSS y JavaScript (ES5). El libro enseñará JavaScript ES6 y más allá. Si vienes de un marco o biblioteca SPA diferente, ya deberías estar familiarizado con los conceptos básicos. Si acabas de comenzar en el desarrollo web, deberías sentirte cómodo con HTML, CSS y JavaScript ES5 para aprender React. Les animo a que se unan al canal oficial para el libro [Slack ](https://slack-the-road-to-learn-react.wieruch.com/) para obtener ayuda o ayudar a otros .
 
-Cada desarrollador necesita herramientas para crear aplicaciones. Necesitaras un editor (IDE) y una herramienta de terminal (línea de comandos). Puedes leer mi configuración de desarrollador para organizar tus herramientas: [Configuración del desarrollador](https://www.robinwieruch.de/developer-setup/). Se ajusta para los usuarios de Mac, pero puedes sustituir la mayoría de las herramientas para otro sistema operativo.
+Cada desarrollador necesita herramientas para crear aplicaciones. Necesitarás un editor (IDE) y una herramienta de terminal (línea de comandos). Puedes leer mi configuración de desarrollador para organizar tus herramientas: [Configuración del desarrollador](https://www.robinwieruch.de/developer-setup/). Se ajusta para los usuarios de Mac, pero puedes sustituir la mayoría de las herramientas para otro sistema operativo.
 
 El editor se utiliza para organizar y escribir su código. El terminal se utiliza para ejecutar comandos. Un comando puede ser iniciar su aplicación, ejecutar pruebas o instalar otras bibliotecas para su proyecto.
 
 Por último, pero no menos importante, necesitará instalar [node and npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitará en el camino para aprender React. Se instalarán paquetes de node externos a través de npm (gestor de paquetes de node). Estos paquetes de node pueden ser bibliotecas o entornos completos.
 
-Puedes verificar tus versiones de node y npm en la línea de comandos. Si no obtiene ninguna salida en la terminal, primero debe instalar node y npm. Estas son mis versiones:
+Puedes verificar tus versiones de node y npm en la línea de comandos. Si no obtienes ninguna salida en la terminal, primero debes instalar node y npm. Estas son mis versiones:
 
 ~~~~~~~~
 node --version
@@ -45,11 +45,11 @@ npm --version
 
 ## node y npm
 
-Este capítulo le dará un pequeño curso intensivo en nodo y npm. No es exhaustivo, pero obtendrá todas las herramientas necesarias. Si está familiarizado con ambos, puede omitir el capítulo.
+Este capítulo te dará un pequeño curso intensivo en nodo y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si estás familiarizado con ambos, puedes omitir el capítulo.
 
-El **manejador de paquetes de node** (npm) Permite instalar **paquetes externos **desde la linea de comandos. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o entornos completos. Son las dependencias de su aplicación. Puede instalar estos paquetes en su carpeta de paquetes de node global o en su carpeta de proyecto local.
+El **manejador de paquetes de node** (npm) Permite instalar **paquetes externos **desde la línea de comandos. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o entornos completos. Son las dependencias de tu aplicación. Puedes instalar estos paquetes en tu carpeta de paquetes de node global o en tu carpeta de proyecto local.
 
-Los paquetes de nodos globales son accesibles desde cualquier lugar del terminal y solo hay que instalarlos una vez. Puede instalar un paquete global escribiendo su terminal:
+Los paquetes de nodos globales son accesibles desde cualquier lugar del terminal y solo hay que instalarlos una vez. Puede instalar un paquete globalmente escribiendo en tu terminal:
 
 ~~~~~~~~
 npm install -g <paquete>
