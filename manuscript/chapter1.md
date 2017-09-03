@@ -8,7 +8,7 @@ El capitulo te da una introducción a React. Podrías preguntarte: ¿Por qué de
 
 La versión inicial de React fue creada en 2013 por Facebook. React no es un framework SPA, pero sí una librería para la vista. Es la V en [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador) (modelo vista controlador). Sólo te permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
 
-Pero por que deberías considerar usar React sobre la primera generación de Frameworks SPA? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React solo te ayuda a construir tu capa de vista. Es una biblioteca y no un Framework. La idea detrás de ella: Su vista es una jerarquía de componentes ensamblables.
+¿Pero por que deberías considerar usar React sobre la primera generación de Frameworks SPA? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React solo te ayuda a construir tu capa de vista. Es una biblioteca y no un Framework. La idea detrás de ella: Su vista es una jerarquía de componentes ensamblables.
 
 En React, puedes centrarte en tu vista antes de introducir más aspectos en tu aplicación. Cada otro aspecto es otro componente de su SPA. Estos bloques de construcción son esenciales para construir una aplicación madura. Vienen con dos ventajas.
 
@@ -245,13 +245,13 @@ export default App;
 
 No te dejes confundir por las declaraciones de import/export y declaración de clases. Estas características son JavaScript ES6. Volveremos a verlas en un capítulo posterior.
 
-En el archivo tienes un ** componente ES6 class ** con el nombre App. Es una declaración de componente. Básicamente después de haber declarado un componente, puedes utilizarlo como elemento en cualquier parte de tu aplicación. Producirá una **instancia** de su **componente** o en otras palabras: El componente se instancia.
+En el archivo tienes un **componente ES6 class** con el nombre App. Es una declaración de componente. Básicamente después de haber declarado un componente, puedes utilizarlo como elemento en cualquier parte de tu aplicación. Producirá una **instancia** de tu **componente** o en otras palabras: El componente se instancia.
 
-El **elemento** que devuelve se especifica en el método `render()`. Los elementos son de lo que estan hechos los componentes. Es útil comprender las diferencias entre componente, instancia y elemento.
+El **elemento** que devuelve se especifica en el método `render()`. Los elementos son de lo que están hechos los componentes. Es útil comprender las diferencias entre componente, instancia y elemento.
 
-Muy pronto veras donde se utiliza el componente App. De lo contrario, no verá la salida renderizada en el navegador, verdad? El componente App es sólo la declaración, pero no el uso. Se podría instanciar el componente en algún lugar de su JSX con `<App />`.
+Muy pronto veras donde se utiliza el componente App. De lo contrario, no verá la salida renderizada en el navegador, verdad? El componente App es sólo la declaración, pero no el uso. Se podría instanciar el componente en algún lugar de tu JSX con `<App />`.
 
-El contenido en el bloque render se parece bastante a HTML, pero es JSX. JSX le permite mezclar HTML y JavaScript. Es potente pero confuso cuando estás acostumbrado a HTML simple. Es por eso que un buen punto de partida es utilizar HTML básico en su JSX. A continuación, puedes empezar a incrustar expresiones JavaScript entre llaves.
+El contenido en el bloque render se parece bastante a HTML, pero es JSX. JSX te permite mezclar HTML y JavaScript. Es potente pero confuso cuando estás acostumbrado a HTML simple. Es por eso que un buen punto de partida es utilizar HTML básico en tu JSX. A continuación, puedes empezar a insertar expresiones JavaScript entre llaves.
 
 Primero vamos a eliminar todo el desorden en el archivo.
 
@@ -292,9 +292,9 @@ class App extends Component {
 export default App;
 ```
 
-Debería funcionar cuando inicie su aplicación en la línea de comandos..
+Debería funcionar cuando inicies tu aplicación en la línea de comandos.
 
-Además, es posible que hayas notado el atributo `className`. Refleja el atributo estándar `class` en HTML. Debido a razones técnicas, JSX tuvo que reemplazar un puñado de atributos HTML internos. Puede encontrar todos los [atributos HTML compatibles en la documentación de React](https://facebook.github.io/react/docs/dom-elements.html). En tu camino para aprender React e encontrarás con más atributos JSX.
+Además, es posible que hayas notado el atributo `className`. Refleja el atributo estándar `class` en HTML. Debido a razones técnicas, JSX tuvo que reemplazar un puñado de atributos HTML internos. Puede encontrar todos los [atributos HTML compatibles en la documentación de React](https://facebook.github.io/react/docs/dom-elements.html). En tu camino para aprender React te encontrarás con más atributos JSX.
 
 ### Ejercicios:
 
@@ -323,7 +323,7 @@ let helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ```
 
-Lo usarías cuando necesitaras volver a asignar una variable.
+Lo usarás cuando necesites reasignar una variable.
 
 Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `const` no se puede modificar. Pero cuando la variable es un array o un objeto, el valor que tiene puede ser alterado. El valor que tiene no es inmutable.
 
@@ -335,9 +335,9 @@ const helloWorld = {
 helloWorld.text = 'Bye Bye React';
 ```
 
-Pero cuando usar cada una? Hay diferentes opiniones sobre su uso. Sugiero usar `const` cada que puedas. Indica que desea mantener su estructura de datos inmutable aunque los valores en objetos y arreglos se pueden modificar. Si desea modificar la variable, puede utilizar `let`.
+Pero ¿cuando usar cada una? Hay diferentes opiniones sobre su uso. Sugiero usar `const` cada que puedas. Indica que desea mantener su estructura de datos inmutable aunque los valores en objetos y arreglos se pueden modificar. Si desea modificar la variable, puede utilizar `let`.
 
-La inmutabilidad es adoptada en React y su ecosistema. Es por eso que `const` debe ser tu opción por defecto cuando se define una variable. Sin embargo, en objetos complejos los valores internos pueden ser modificados. Tenga cuidado con este comportamiento.
+La inmutabilidad es adoptada en React y su ecosistema. Es por eso que `const` debe ser tu opción por defecto cuando se define una variable. Sin embargo, en objetos complejos los valores internos pueden ser modificados. Ten cuidado con este comportamiento.
 
 En su aplicación debe utilizar `const` sobre `var`.
 
@@ -371,7 +371,7 @@ export default App;
 
 ## ReactDOM
 
-Antes de continuar con el componente App, es posible que desee ver dónde se utiliza. Se encuentra en su punto de entrada al mundo de React: el archivo *src/index.js*.
+Antes de continuar con el componente App, es posible que desee ver dónde se utiliza. Se encuentra en tu punto de entrada al mundo de React: el archivo *src/index.js*.
 
 ```js
 import React from 'react';
@@ -385,11 +385,11 @@ ReactDOM.render(
 );
 ```
 
-Básicamente `ReactDOM.render()` usa un nodo DOM en su HTML para reemplazarlo con su JSX. Así es como puedes integrar fácilmente React en cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en tu aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
+Básicamente `ReactDOM.render()` usa un nodo DOM en tu HTML para reemplazarlo con tu JSX. Así es como puedes integrar fácilmente React en cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en tu aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
 
 `ReactDOM.render()` espera dos argumentos.
 
-El primer argumento es JSX que se renderizara. El segundo argumento especifica el lugar en el que la aplicación React se insertara en tu código HTML. Espera un elemento con un `id='root'`. Puedes abrir tu archivo *public/index.html* para encontrar el atributo id.
+El primer argumento es JSX que se renderizara. El segundo argumento especifica el lugar en el que la aplicación React se insertará en tu código HTML. Espera un elemento con un `id='root'`. Puedes abrir tu archivo *public/index.html* para encontrar el atributo id.
 
 En la implementación `ReactDOM.render()` ya tiene tu componente App. Sin embargo, sería bueno pasar JSX más simple, siempre y cuando sea JSX. No tiene que ser una instancia de un componente.
 
@@ -402,10 +402,10 @@ ReactDOM.render(
 
 ### Ejercicios:
 
-* abre el *public/index.html* para ver dónde se conectan las aplicaciones React en su HTML
+* abre el *public/index.html* para ver dónde se conectan las aplicaciones React en tu HTML
 * leer mas sobre [renderizando elementos en React](https://facebook.github.io/react/docs/rendering-elements.html)
 
-## Modulo Hot Reloading
+## Módulo Hot Reloading
 
 Hay una cosa que usted puede hacer en el archivo *src/index.js* para mejorar su experiencia como desarrollador.
 
