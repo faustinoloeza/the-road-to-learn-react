@@ -214,16 +214,16 @@ Un enfoque podría ser mutar los hits en el objeto resultante. Lo demostraré, p
 this.state.result.hits = updatedHits;
 ~~~~~~~~
 
-React embraces functional programming. Thus you shouldn't mutate an object (or mutate the state directly). A better approach is to generate a new object based on information you have. Thereby none of the objects get altered. You will keep the immutable data structures. You will always return a new object and never alter an object.
+React abarca la programación funcional. Por lo tanto, no debes mutar un objeto (o mutar el estado directamente). Un mejor enfoque es generar un nuevo objeto basado en la información que tienes. De este modo, ninguno de los objetos se altera. Mantendrás las estructuras de datos inmutables. Siempre devolverás un objeto nuevo y nunca alterarás un objeto.
 
-Let's do it in JavaScript ES5. `Object.assign()` takes as first argument a target object. All following arguments are source objects. These objects are merged into the target object. The target object can be an empty object. It embraces immutability, because no source object gets mutated. It would look similar to the following:
+Vamos a hacerlo en JavaScript ES5. `Object.assign()` toma como primer argumento un objeto destino. Todos los argumentos siguientes son objetos de origen. Estos objetos se combinan en el objeto de destino. El objeto de destino puede ser un objeto vacío. Abarca inmutabilidad, porque ningún objeto fuente se muta. Sería similar a lo siguiente:
 
 ~~~~~~~~
 const updatedHits = { hits: updatedHits };
 const updatedResult = Object.assign({}, this.state.result, updatedHits);
 ~~~~~~~~
 
-Now let's do it in the `onDismiss()` method:
+Ahora vamos a hacerlo en el método  `onDismiss()`:
 
 ~~~~~~~~
 onDismiss(id) {
@@ -235,9 +235,9 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-That's it in JavaScript ES5. There is a simpler solution in ES6 and future JavaScript releases. May I introduce the spread operator to you? It only consists of three dots: `...` When it is used, every value from an array or object gets copied to another array or object.
+Eso es en JavaScript ES5. Existe una solución más sencilla en ES6 y futuras versiones de JavaScript. ¿Puedo presentarles el operador de propagación? Sólo consta de tres puntos: `...` Cuando se utiliza, cada valor de una matriz u objeto se copia a otra matriz u objeto.
 
-Let's examine the ES6 **array** spread operator even though you don't need it yet.
+Examinemos el operador de propagación de arreglos de ES6, aunque aún no lo necesites.
 
 ~~~~~~~~
 const userList = ['Robin', 'Andrew', 'Dan'];
@@ -248,7 +248,7 @@ console.log(allUsers);
 // output: ['Robin', 'Andrew', 'Dan', 'Jordan']
 ~~~~~~~~
 
-The `allUsers` variable is a completely new array. The other variables `userList` and `additionalUser` stay the same. You can even merge two arrays that way into a new array.
+La variables `allUsers`  es un arreglo completamente nuevo. Las otras variables `userList` y `additionalUser` siguen igual. Incluso puedes combinar dos arreglos de esa manera en un nuevo arreglo.
 
 ~~~~~~~~
 const oldUsers = ['Robin', 'Andrew'];
@@ -259,9 +259,9 @@ console.log(allUsers);
 // output: ['Robin', 'Andrew', 'Dan', 'Jordan']
 ~~~~~~~~
 
-Now let's have a look at the object spread operator. It is not ES6! It is a [proposal for a future ES version](https://github.com/sebmarkbage/ecmascript-rest-spread) yet already used by the React community. That's why *create-react-app* incorporated the feature in the configuration.
+Ahora echemos un vistazo al operador de propagación de objetos. ¡No es ES6! Es una [propuesta para una futura versión de ES](https://github.com/sebmarkbage/ecmascript-rest-spread) ya utilizada por la comunidad React. Es por eso que *create-react-app* incorporó la característica en la configuración.
 
-Basically it is the same as the JavaScript ES6 array spread operator but with objects. It copies each key value pair into a new object.
+Básicamente es el mismo que el operador de ES6 de dispersión de array de JavaScript pero con objetos. Copia cada par de valores clave en un nuevo objeto.
 
 ~~~~~~~~
 const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
@@ -272,7 +272,7 @@ console.log(user);
 // output: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
 ~~~~~~~~
 
-Multiple objects can be spread like in the array spread example.
+Multiples objetos pueden dispersarse como en el ejemplo de dispersion de arreglos.
 
 ~~~~~~~~
 const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
@@ -283,7 +283,7 @@ console.log(user);
 // output: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
 ~~~~~~~~
 
-After all it can be used to replace ES5 `Object.assign()`.
+Después de todo se puede utilizar para reemplazar ES5 `Object.assign()`.
 
 ~~~~~~~~
 onDismiss(id) {
@@ -295,15 +295,15 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-The "Dismiss" button should work again.
+El boton "Dismiss" debería funcionar de nuevo.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [Object.assign()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
-* read more about the [ES6 array spread operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator)
+* leer más sobre [Object.assign()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+* leer más sobre the [ES6 array spread operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator)
   * the object spread operator is briefly mentioned
 
-## Conditional Rendering
+## Renderizado Condicional
 
 The conditional rendering is introduced pretty early in React applications. It happens when you want to make a decision to render either one or another element. Sometimes it means to render an element or nothing. After all, a conditional rendering simplest usage can be expressed by an if-else statement in JSX.
 
