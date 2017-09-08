@@ -305,11 +305,12 @@ El boton "Dismiss" debería funcionar de nuevo.
 
 ## Renderizado Condicional
 
-The conditional rendering is introduced pretty early in React applications. It happens when you want to make a decision to render either one or another element. Sometimes it means to render an element or nothing. After all, a conditional rendering simplest usage can be expressed by an if-else statement in JSX.
+El renderizado condicional se introduce muy temprano en las aplicaciones React. Sucede cuando se quiere tomar la decisión de renderizar uno u otro elemento. A veces significa renderizar un elemento o nada. Después de todo, una representación condicional de uso más simple puede ser expresada por una sentencia if-else en JSX.
 
-The `result` object in the internal component state is null in the beginning. So far, the App component returned no elements when the `result` hasn't arrived from the API. That's already a conditional rendering, because you return earlier from the `render()` lifecycle method for a certain condition. The App component either renders nothing or its elements.
 
-But let's go one step further. It makes more sense to wrap the Table component, which is the only component that depends on the `result`, in an independent conditional rendering. Everything else should be displayed, even though there is no `result` yet. You can simply use a ternary expression in your JSX.
+El objeto `resultante` en el estado de interno del componente es nulo al principio. Hasta el momento, el componente App no ​​devuelve elementos cuando el resultado no ha llegado de la API. Eso ya es un renderizado condicional, porque vuelves antes del metodo `render()` por cierta condición. El componente App no renderiza nada o sus elementos.
+
+Pero vamos un paso más allá. Tiene más sentido envolver el componente Table, que es el único componente que depende del resultado, en un renderizado condicional independiente. Todo lo demás se debe mostrar, aunque no hay ningún `resultado` aún. Simplemente puede utilizar una expresión ternaria en su JSX.
 
 ~~~~~~~~
 class App extends Component {
@@ -342,9 +343,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-That's your second option to express a conditional rendering. A third option is the logical `&&` operator. In JavaScript a `true && 'Hello World'` always evaluates to 'Hello World'. A `false && 'Hello World'` always evaluates to false.
+Esa es tu segunda opción para expresar un renderizado condicional. Una tercera opción es el operador `&&` lógico . En JavaScript, un `true && 'Hello World'` siempre se evalúa como 'Hello World'. Un `false && 'Hello World'` siempre se evalúa como falso.
 
-~~~~~~~~
+```js
 const result = true && 'Hello World';
 console.log(result);
 // output: Hello World
@@ -352,9 +353,9 @@ console.log(result);
 const result = false && 'Hello World';
 console.log(result);
 // output: false
-~~~~~~~~
+```
 
-In React you can make use of that behavior. If the condition is true, the expression after the logical `&&` operator will be the output. If the condition is false, React ignores and skips the expression. It is applicable in the Table conditional rendering case, because it should return a Table or nothing.
+En React puedes hacer uso de ese comportamiento. Si la condición es verdadera, la expresión después del operador lógico `&&` será la salida. Si la condición es falsa, React ignora y omite la expresión. Es aplicable en el caso de renderizado condicional de la tabla, ya que debe devolver una Tabla o nada.
 
 ~~~~~~~~
 { result &&
@@ -366,20 +367,20 @@ In React you can make use of that behavior. If the condition is true, the expres
 }
 ~~~~~~~~
 
-These were a few approaches to use conditional rendering in React. You can read about [more alternatives on my website](https://www.robinwieruch.de/conditional-rendering-react/) where I keep an exhaustive list of conditional renderings. Moreover you will get to know their different use cases and when to apply them.
+Estos fueron algunos enfoques para utilizar el renderizado condicional en React. Puedes leer sobre [más alternativas en mi sitio web](https://www.robinwieruch.de/conditional-rendering-react/) donde mantengo una lista exhaustiva de renderizaciones condicionales. Además, conocerá sus diferentes casos de uso y cuándo aplicarlos.
 
-After all, you should be able to see the fetched data in your application. Everything except the Table is displayed when the data fetching is pending. Once the request resolves the result, the Table is displayed.
+Después de todo, debería poder ver los datos obtenidos en tu aplicación. Todo excepto la Tabla se muestra cuando la búsqueda de datos está pendiente. Una vez que la solicitud resuelve el resultado, se muestra la tabla.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [React conditional rendering](https://facebook.github.io/react/docs/conditional-rendering.html)
-* read more about [different ways for conditional renderings](https://www.robinwieruch.de/conditional-rendering-react/)
+* leer más sobre [React renderizado condicional](https://facebook.github.io/react/docs/conditional-rendering.html)
+* leer más sobre [diferentes formas para renderizaciones condicionales](https://www.robinwieruch.de/conditional-rendering-react/)
 
-## Client- or Server-side Search
+## Búsqueda por cliente o por servidor
 
-When you use the search input field now, you will filter the list. That's happening on the client-side though. Now you are going to use the Hacker News API to search on the server-side. Otherwise you would deal only with the first API response which you got on `componentDidMount()` with the default search term parameter.
+Ahora cuando utilices el campo de búsqueda, filtrarás la lista. Sin embargo eso está sucediendo en el lado del cliente. Ahora vas a utilizar la API de Hacker News para buscar en el servidor. De lo contrario, sólo te ocuparías de la primera respuesta de la API que recibiste de `componentDidMount()` con el parámetro del término de búsqueda predeterminado.
 
-You can define an `onSubmit()` method in your ES6 class component, which fetches results from the Hacker News API. It will be the same fetch like in your `componentDidMount()` lifecycle method. But it fetches it with the modified search term from the search field input.
+Puede definir un metodo `onSubmit()` en su componente de clase ES6, que obtenga resultados de la API de Hacker News. Será la misma búsqueda que en tu metodo `componentDidMount()`. Pero lo buscara con el término modificado de la entrada del campo de búsqueda.
 
 ~~~~~~~~
 class App extends Component {
@@ -410,13 +411,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The Search component gets an additional button. The button has to explicitly trigger the search. Otherwise you would fetch data every time from the Hacker News API when your input changes.
+El componente de búsqueda obtiene un botón adicional. El botón tiene que activar explícitamente la búsqueda. De lo contrario, obtendrás datos de la API de Hacker News cada vez que tu campo de entrada cambie.
 
-As alternative you could debounce (delay) the `onChange()` function and spare the button, but it would add more complexity at this time. Let's keep it simple without a debounce.
+Como alternativa, podría rebatir (retrasar) la funcion `onChange()` y ahorrarte el botón, pero añadiría más complejidad en este momento. Vamos a mantenerlo simple sin un rebote.
 
-First, pass the `onSearchSubmit()` method to your Search component.
+Primero, pasa el metodo `onSearchSubmit()` a tu componente de búsqueda.
 
-~~~~~~~~
+```js
 class App extends Component {
 
   ...
@@ -445,11 +446,11 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+```
 
-Second, introduce a button in your Search component. The button has the `type="submit"` and the form uses its `onSubmit()` attribute to pass the `onSubmit()` method. You can reuse the children property, but this time it will be used as the content of the button.
+En segundo lugar, introduzce un botón en tu componente de búsqueda. El botón tiene el `type="submit"` y el formulario utiliza su atributo `onSubmit()` para pasar el método `onSubmit()`. Puedes reutilizar la propiedad de los hijos, pero esta vez se utilizará como el contenido del botón.
 
-~~~~~~~~
+```js
 const Search = ({
   value,
   onChange,
@@ -466,11 +467,11 @@ const Search = ({
       {children}
     </button>
   </form>
-~~~~~~~~
+```
 
-In the Table you can remove the filter functionality, because there will be no client-side filter (search) anymore. The result comes directly from the Hacker News API after you have clicked the "Search" button.
+En la tabla puedes quitar la funcionalidad de filtro, ya que no habrá más ningún filtro en el cliente (búsqueda). El resultado viene directamente de la API Hacker News después de haber hecho clic en el botón "Buscar".
 
-~~~~~~~~
+```js
 class App extends Component {
 
   ...
@@ -499,30 +500,29 @@ const Table = ({ list, onDismiss }) =>
       ...
     )}
   </div>
-~~~~~~~~
+```
 
-When you try to search now, you will notice that the browser reloads. That's a native browser behavior for a submit callback in a form. In React you will often come across the `preventDefault()` event method to suppress the native browser behavior.
+Ahora cuando intentes buscar, notarás que el navegador se recarga. Es el comportamiento nativo del navegador para un callback en un formulario. En React, a menudo encontrarás el metodo de evento `preventDefault()` para suprimir el comportamiento nativo del navegador.
 
-~~~~~~~~
+```js
 onSearchSubmit(event) {
   const { searchTerm } = this.state;
   this.fetchSearchTopstories(searchTerm);
   event.preventDefault();
 }
-~~~~~~~~
+```
 
-Now you should be able to search different Hacker News stories. You interact with a real world API. There should be no client-side search anymore.
+Ahora deberías poder buscar diferentes historias de Hacker News. Interactúas con una API del mundo real. No debería haber más búsqueda de lado del cliente.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [synthetic events in React](https://facebook.github.io/react/docs/events.html)
+* leer mas sobre [synthetic events in React](https://facebook.github.io/react/docs/events.html)
 
-## Paginated Fetch
+## Búsqueda paginada
 
-Did you have a closer look at the returned data structure yet? The [Hacker News API](https://hn.algolia.com/api) returns more than a list of hits. The page property, which is 0 in the first response, can be used to fetch more paginated data. You only need to pass the next page with the same search term to the API.
+¿Ha observado de cerca la estructura de datos devuelta? La [Hacker News API](https://hn.algolia.com/api) devuelve más que una lista de visitas. La propiedad de página, que es 0 en la primera respuesta, se puede utilizar para obtener más datos paginados. Sólo tiene que pasar la siguiente página con el mismo término de búsqueda a la API.
 
-Let's extend the composable API constants that so it can deal with paginated data.
-
+Vamos a extender las constantes API ensamblables para que pueda ocuparse de los datos paginados.
 ~~~~~~~~
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_PAGE = 0;
@@ -533,18 +533,18 @@ const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 ~~~~~~~~
 
-Now you can use these constants to add the page parameter to your API request.
+Ahora puedes utilizar estas constantes para agregar el parámetro de página a tu solicitud de API.
 
-~~~~~~~~
+```js
 const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}`;
 
 console.log(url);
 // output: https://hn.algolia.com/api/v1/search?query=redux&page=
-~~~~~~~~
+```
 
-The `fetchSearchTopstories()` method will take the page as second argument. The `componentDidMount()` and `onSearchSubmit()` methods take the `DEFAULT_PAGE` for the initial API calls. They should fetch the first page on the first request. Every additional fetch should fetch the next page.
+El método `fetchSearchTopstories()` tomará la página como segundo argumento. Los métodos `componentDidMount()` y `onSearchSubmit()` toman `DEFAULT_PAGE` para las llamadas iniciales a la API. Deben buscar la primera página en la primera solicitud. Cada búsqueda adicional debe buscar la siguiente página.
 
-~~~~~~~~
+```js
 class App extends Component {
 
   ...
@@ -570,11 +570,11 @@ class App extends Component {
   ...
 
 }
-~~~~~~~~
+```
 
-Now you can use the current page from the API response in `fetchSearchTopstories()`. You can use this method in a button to fetch more stories on a button click. Let's use the Button to fetch more paginated data from the Hacker News API. You only need to define the `onClick()` function which takes the current search term and the next page (current page + 1).
+Ahora puede utilizar la página actual de la respuesta del API en `fetchSearchTopstories()`. Puedes utilizar este método en un botón para obtener más historias en un clic de botón. Utilicemos el botón para obtener más datos paginados de la API de Hacker News. Sólo necesitas definir la función `onClick()` que toma el término de búsqueda actual y la página siguiente (página actual + 1).
 
-~~~~~~~~
+```
 class App extends Component {
 
   ...
@@ -601,13 +601,13 @@ class App extends Component {
     );
   }
 }
-~~~~~~~~
+```
 
-You should make sure to default to page 0 when there is no result.
+Debe asegurarte de predeterminar a la página 0 cuando no hay ningún resultado.
 
-There is one step missing. You fetch the next page of data, but it will overwrite your previous page of data. You want to concatenate the old and new data. Let's adjust the functionality to add the new data rather than to overwrite it.
+Falta un paso. Traes la siguiente página de datos, pero sobreescribirás la página de datos anterior. Deseas concatenar los datos antiguos y nuevos. Vamos a ajustar la funcionalidad para agregar los nuevos datos en lugar de sobrescribirlos.
 
-~~~~~~~~
+```
 setSearchTopstories(result) {
   const { hits, page } = result;
 
@@ -624,17 +624,17 @@ setSearchTopstories(result) {
     result: { hits: updatedHits, page }
   });
 }
-~~~~~~~~
+```
 
-First, you get the hits and page from the result.
+Primero, obtienes los hits y la página del resultado.
 
-Second, you have to check if there are already old hits. When the page is 0, it is a new search request from `componentDidMount()` or `onSearchSubmit()`. The hits are empty. But when you click the "More" button to fetch paginated data the page isn't 0. It is the next page. The old hits are already stored in your state and thus can be used.
+En segundo lugar, usted tiene que comprobar si ya hay antiguos hits.  Cuando la página es 0, es una nueva solicitud de búsqueda de `componentDidMount()` o `onSearchSubmit()`. . Los éxitos están vacíos. Pero cuando hace clic en el botón  "More" para buscar datos paginados, la página no es 0. It is the next page. Es la página siguiente. Los hits antiguos ya están almacenados en tu estado y por lo tanto se pueden utilizar.
 
-Third, you don't want to overwrite the old hits. You can merge old and new hits from the recent API request. The merge of both lists can be done with the JavaScript ES6 array spread operator.
+En tercer lugar, no deseas sobrescribir los antiguos resultados. Puedes combinar hits antiguos y nuevos de la solicitud de API reciente. La combinación de ambas listas se puede realizar con el operador de distribución de ES6 de JavaScript.
 
-Fourth, you set the merged hits and page in the internal component state.
+En cuarto lugar, establece los hits combinados y la página en el estado del componente interno.
 
-You can make one last adjustment. When you try the "More" button it only fetches a few list items. The API url can be extended to fetch more list items with each request. Again you can add more composable path constants.
+Puedes hacer un último ajuste. Cuando pruebes el botón "More" sólo obtiene algunos elementos de la lista. El URL de la API se puede extender para buscar más elementos de la lista con cada solicitud. Una vez más, puede agregar más constantes de ruta compuestas.
 
 ~~~~~~~~
 const DEFAULT_QUERY = 'redux';
@@ -648,7 +648,7 @@ const PARAM_PAGE = 'page=';
 const PARAM_HPP = 'hitsPerPage=';
 ~~~~~~~~
 
-Now you can use the constants to extend the API url.
+Ahora puede usar las constantes para extender la URL de la API.
 
 ~~~~~~~~
 fetchSearchTopstories(searchTerm, page) {
@@ -659,19 +659,19 @@ fetchSearchTopstories(searchTerm, page) {
 }
 ~~~~~~~~
 
-Afterward the request to the Hacker News API fetches more list items in one request than before.
+Posteriormente, la solicitud a la Hacker News API busca más elementos de la lista en una solicitud que antes.
 
-### Exercises:
+### Ejercicios:
 
-* experiment with the [Hacker News API parameters](https://hn.algolia.com/api)
+* experimentar con el [Hacker News API parameters](https://hn.algolia.com/api)
 
-## Client Cache
+## Caché del Cliente
 
-Each search submit makes a request to the Hacker News API. You might search for "redux", followed by "react" and eventually "redux" again. In total it makes 3 requests. But you searched for "redux" twice and both times it took a whole asynchronous roundtrip to fetch the data. In a client-sided cache you would store each result. When a request to the API is made, it checks if a result is already there. If it is there, the cache is used. Otherwise an API request is made to fetch the data.
+Cada búsqueda envía una solicitud a la API de Hacker News. Puedes buscar "redux", seguido de "react" y eventualmente "redux" de nuevo. En total hace 3 peticiones. Pero buscaste "redux" dos veces y las dos veces tomó todo un viaje de ida y vuelta asíncrono para buscar los datos. En una memoria caché del lado del cliente se almacenara cada resultado. Cuando se realiza una solicitud a la API, comprueba si ya hay un resultado. Si está allí, se utiliza la caché. De lo contrario, se realizará una solicitud de API para recuperar los datos.
 
-In order to have a client cache for each result, you have to store multiple `results` rather than one `result` in your internal component state. The results object will be a map with the search term as key and the result as value. Each result from the API will be saved by search term (key).
+Para tener un caché de cliente para cada resultado, tiene que almacenar múltiples `results` en lugar de un `result` en tu estado de componente interno. El objeto de resultados será un mapa con el término de búsqueda como clave y el resultado como valor. Cada resultado de la API se guardará mediante el término de búsqueda (clave).
 
-At the moment your result in the component state looks similar to the following:
+En este momento tu resultado en el estado del componente es similar al siguiente:
 
 ~~~~~~~~
 result: {
@@ -680,9 +680,8 @@ result: {
 }
 ~~~~~~~~
 
-Imagine you have made two API requests. One for the search term "redux" and another one for "react". The results map should look like the following:
+Imagine que ha realizado dos solicitudes de API. Uno para el término de búsqueda "redux" y otro para "react". El mapa de resultados debería tener el siguiente aspecto:
 
-{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 results: {
   redux: {
@@ -697,7 +696,7 @@ results: {
 }
 ~~~~~~~~
 
-Let's implement a client-side cache with React `setState()`. First, rename the `result` object to `results` in the initial component state. Second, define a temporary `searchKey` which is used to store each `result`.
+Vamos a implementar una caché en el cliente con React `setState()`. En primer lugar, cambie el nombre del objeto `result` a `results` en el estado inicial del componente.  En segundo lugar, defina una `searchKey` temporal que se utiliza para almacenar cada `result`.
 
 ~~~~~~~~
 class App extends Component {
@@ -720,7 +719,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The `searchKey` has to be set before each request is made. It reflects the `searchTerm`. You might wonder: Why don't we use the `searchTerm` in the first place? The `searchTerm` is a fluctuant variable, because it gets changed every time you type into the Search input field. However, in the end you will need a non fluctuant variable. It determines the recent submitted search term to the API and can be used to retrieve the correct result from the map of results. It is a pointer to your current result in the cache.
+La `searchKey` debe establecerse antes de realizar cada solicitud. Refleja el `searchTerm`. Usted puede preguntarse: ¿Por qué no usamos el `searchTerm` en primer lugar? El `searchTerm` es una variable fluctuante, ya que se cambia cada vez que escribes en el campo de búsqueda de entrada. Sin embargo, al final necesitarás una variable no fluctuante. Determina el término de búsqueda enviado recientemente a la API y puede utilizarse para recuperar el resultado correcto del mapa de resultados. Es un puntero a su resultado actual en la caché.
 
 ~~~~~~~~
 componentDidMount() {
@@ -737,7 +736,7 @@ onSearchSubmit(event) {
 }
 ~~~~~~~~
 
-Now you have to adjust the functionality where the result is stored to the internal component state. It should store each result by `searchKey`.
+Ahora tiene que ajustar la funcionalidad donde el resultado se almacena en el estado del componente interno. Debe almacenar cada resultado por `searchKey`.
 
 ~~~~~~~~
 class App extends Component {
@@ -770,13 +769,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-The `searchKey` will be used as the key to save the updated hits and page in a `results` map.
+El `searchKey` se utilizará como clave para guardar los resultados y la página actualizados en un mapa de `results`.
 
-First, you have to retrieve the `searchKey` from the component state. Remember that the `searchKey` gets set on `componentDidMount()` and `onSearchSubmit()`.
+Primero, tienes que recuperar el `searchKey` desde el estado del componente. Recuerde que e `searchKey` se pone en `componentDidMount()` y `onSearchSubmit()`.
 
-Second, the old hits have to get merged with the new hits as before. But this time the old hits get retrieved from the `results` map with the `searchKey` as key.
+En segundo lugar, los hits antiguos tienen que fusionarse con los nuevos hits como antes. Pero esta vez los antiguos hits son recuperados del mapa de `results` con el  `searchKey` como clave.
 
-Third, a new result can be set in the `results` map in the state. Let's examine the `results` object in `setState()`.
+En tercer lugar, un nuevo resultado puede setearse en el mapa `results` en el estado. Examinemos el objeto `results` en `setState()`.
 
 ~~~~~~~~
 results: {
@@ -785,11 +784,11 @@ results: {
 }
 ~~~~~~~~
 
-The bottom part makes sure to store the updated result by `searchKey` in the results map. The value is an object with a hits and page property. The `searchKey` is the search term. You already learned the `[searchKey]` syntax. It is an ES6 computed property name. It helps you to allocate values dynamically in an object.
+La parte inferior se cerciora de almacenar el resultado actualizado por `searchKey` en el mapa de resultados. El valor es un objeto con una propiedad de visitas y página. El `searchKey` el término de búsqueda. Ya aprendiste la sintaxis `[searchKey]`. Es un nombre de propiedad computado ES6. Le ayuda a asignar valores dinámicamente en un objeto.
 
-The upper part needs to object spread all other results by `searchKey` in the state. Otherwise you would lose all results you stored before.
+TLa parte superior tiene que objetar la propagación de todos los demás resultados por `searchKey` en el estado. De lo contrario, perdería todos los resultados almacenados anteriormente.
 
-Now you store all results by search term. That's the first step to enable your cache. In the next step you can retrieve the result depending on the search term from your map of results.
+Ahora almacena todos los resultados por término de búsqueda. Ese es el primer paso para habilitar su caché. En el siguiente paso, puede recuperar el resultado dependiendo del término de búsqueda de su mapa de resultados.
 
 ~~~~~~~~
 class App extends Component {
@@ -835,11 +834,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Since you default to an empty list when there is no result by `searchKey`, you can spare the conditional rendering for the Table component now. Additionally you will need to pass the `searchKey` rather than the `searchTerm` to the "More" button. Otherwise your paginated fetch depends on the `searchTerm` value which is fluctuant. Moreover make sure to keep the fluctuant `searchTerm` property for the input field in the "Search" component.
+Puesto que definiste a una lista vacía cuando no hay resultado por `searchKey`, Ahora puedes ahorrate el renderizado condicional para el componente Tabla. Además, tendrá que pasar el `searchKey` en lugar del `searchTerm` al botón "More". De lo contrario, su búsqueda paginada depende del valor `searchTerm` que es fluctuante. Además, asegúrese de mantener la propiedad fluctuante `searchTerm` para el campo de entrada en el componente "Search".
 
-The search functionality should work again. It stores all results from the Hacker News API.
+La funcionalidad de búsqueda debería funcionar de nuevo. Almacena todos los resultados de la API de Hacker News.
 
-Additionally the `onDismiss()` method needs to get improved. It still deals with the `result` object. Now it has to deal with multiple `results`.
+Además, el metodo `onDismiss()` necesita ser mejorado. Todavía se ocupa del objeto `result`. Ahora tiene que tratar con múltiples `results`.
 
 ~~~~~~~~
   onDismiss(id) {
@@ -858,9 +857,9 @@ Additionally the `onDismiss()` method needs to get improved. It still deals with
   }
 ~~~~~~~~
 
-The "Dismiss" button should work again.
+El botón "Dismiss" debería funcionar de nuevo.
 
-However, nothing stops the application from sending an API request on each search submit. Even though there might be already a result, there is no check that prevents the request. The cache functionality is not complete yet. The last step would be to prevent the request when a result is available in the cache.
+Sin embargo, nada impide que la aplicación envíe una solicitud de API en cada envío de búsqueda. Aunque puede haber ya un resultado, no hay ninguna comprobación que impida la solicitud. La funcionalidad de caché no está completa todavía. El último paso sería evitar la solicitud cuando un resultado está disponible en la caché.
 
 ~~~~~~~~
 class App extends Component {
@@ -899,26 +898,26 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Now your client makes a request to the API only once although you search for a search term twice. Even paginated data with several pages gets cached that way, because you always save the last page for each result in the `results` map.
+Ahora su cliente hace una solicitud a la API sólo una vez, aunque usted busca un término de búsqueda dos veces. Incluso los datos paginados con varias páginas se almacenan en caché de esa manera, porque siempre se guarda la última página de cada resultado en el mapa `results`.
 
-You have learned to interact with an API in React! Let's recap the last chapters:
+¡Has aprendido a interactuar con una API en React! Repasemos los últimos capítulos:
 
 * React
-  * ES6 class component lifecycle methods for different use cases
-  * componentDidMount() for API interactions
-  * conditional renderings
-  * synthetic events on forms
+  * Métodos del ciclo de vida de los componentes de clase ES6 para diferentes casos de uso
+  * componentDidMount() para las interacciones API
+  * renderizados condicionales
+  * eventos sintéticos en los formularios
 * ES6
-  * template strings to compose strings
-  * spread operator for immutable data structures
-  * computed property names
+  * cadenas de plantilla para componer cadenas
+  * operador de propagación para estructuras de datos inmutables
+  * nombres de propiedad calculados
 * General
-  * Hacker News API interaction
-  * native fetch browser API
-  * client- and server-side search
-  * pagination of data
-  * client-side caching
+  * Interacción con la API de Hacker News
+  * busqueda nativa con la API del navegador
+  * búsqueda de cliente y servidor
+  * paginación de datos
+  * almacenamiento en caché del lado del cliente
 
-Again it makes sense to take a break. Internalize the learnings and apply them on your own. You can experiment with the source code you have written so far.
+Una vez más tiene sentido tomar un descanso. Internalizar los aprendizajes y aplicarlos por su cuenta. Puede experimentar con el código fuente que ha escrito hasta ahora.
 
-You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/e60436a9d6c449e76a362aef44dd5667357b7994).
+Puede encontrar el código fuente en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/e60436a9d6c449e76a362aef44dd5667357b7994).
