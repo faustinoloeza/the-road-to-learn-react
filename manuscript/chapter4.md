@@ -1,60 +1,56 @@
-# Code Organization and Testing
+# Organización de Código y Pruebas
 
-The chapter will focus on important topics to keep your code maintainable in a scaling application. You will learn about code organization to embrace best practices when structuring your folders and files. Another aspect you will learn is testing, which is important to keep your code robust.
+El capítulo se centrará en temas importantes para mantener tu código mantenible en una aplicación escalable. Aprenderás sobre la organización del código para adoptar las mejores prácticas al estructurar tus carpetas y archivos. Otro aspecto que aprenderás son las pruebas, lo cual es importante para mantener su código robusto.
 
-## ES6 Modules: Import and Export
+## Módulos ES6: Importación y Exportación
 
-In JavaScript ES6 you can import and export functionalities from modules. These functionalities can be functions, classes, components, constants etc. Basically everything that you can assign to a variable. The modules can be single files or whole folders with one index file as entry point.
+En JavaScript ES6 puedes importar y exportar funcionalidades desde módulos. Estas funcionalidades pueden ser funciones, clases, componentes, constantes, etc. Básicamente todo lo que puede asignar a una variable. Los módulos pueden ser archivos individuales o carpetas enteras con un archivo de índice como punto de entrada.
 
-In the beginning of the book, after you have bootstrapped your application with *create-react-app*, you already had several `import` and `export` statements across your initial files. Now it is the appropriate time to explain these.
+Al principio del libro, después de haber iniciado la aplicación con *create-react-app* , ya tenías varios `import` y `export` a través de sus archivos iniciales. Ahora es el momento apropiado para explicar esto.
 
-The `import` and `export` statements help you to share code across multiple files. Before there were already several solutions for this in the JavaScript environment. It was a mess, because you would want to follow one standardized way rather than having several approaches for the same thing. Now it is a native behavior in JavaScript ES6.
+Las sentencias `import` y `export` te ayudan a compartir código en varios archivos. Antes ya había varias soluciones para esto en el entorno JavaScript. Fue un desastre, porque querrías seguir una manera estandarizada en lugar de tener varios enfoques para la misma cosa. Ahora es un comportamiento nativo en JavaScript ES6.
 
-Additionally these statements embrace code splitting. You distribute your code across multiple files to keep it reusable and maintainable. The former is true because you can import the piece of code in multiple files. The latter is true because you have one single source where you maintain the piece of code.
+Además, estas declaraciones adoptan la división de código. Distribuyes el código a través de varios archivos para mantenerlo reutilizable y mantenible. Lo primero es cierto porque puede importar el fragmento de código en varios archivos. Esto último es cierto porque usted tiene una sola fuente donde usted mantiene el pedazo de código.
 
-Last but not least, it helps you to think about code encapsulation. Not every functionality needs to get exported from a file. Some of these functionalities should only be used in the file where they have been defined. The exports of a file are basically the public API to the file. Only the exported functionalities are available to be reused somewhere else. It follows the best practice of encapsulation.
+Por último, pero no menos importante, le ayuda a pensar en encapsulación de código. No es necesario que todas las funcionalidades se exporten desde un archivo. Algunas de estas funcionalidades sólo deben utilizarse en el archivo donde se han definido. Las exportaciones de un archivo son básicamente la API pública del archivo. Sólo las funcionalidades exportadas están disponibles para ser reutilizadas en otro lugar. Sigue la mejor práctica de encapsulación.
 
-But let's get practical. How do these `import` and `export` statements work? The following examples showcase the statements by sharing one or multiple variables across two files. In the end, the approach can scale to multiple files and could share more than simple variables.
+Pero seamos prácticos. Como funcionan las declaraciones `import` y `export`? Los ejemplos siguientes muestran las declaraciones compartiendo una o varias variables entre dos archivos. Al final, el enfoque puede escalar a varios archivos y podría compartir más que simples variables.
 
-You can export one or multiple variables. It is called a named export.
+Puede exportar una o varias variables. Se llama una exportación con nombre.
 
-{title="Code Playground: file1.js",lang="javascript"}
-~~~~~~~~
+```js
 const firstname = 'robin';
 const lastname = 'wieruch';
 
 export { firstname, lastname };
-~~~~~~~~
+```
 
-And import them in another file with a relative path to the first file.
+Y los importa en otro archivo con una ruta de acceso relativa al primer archivo.
 
-{title="Code Playground: file2.js",lang="javascript"}
-~~~~~~~~
+```js
 import { firstname, lastname } from './file1.js';
 
 console.log(firstname);
 // output: robin
-~~~~~~~~
+```
 
-You can also import all exported variables from another file as one object.
+También puede importar todas las variables exportadas de otro archivo como un objeto.
 
-{title="Code Playground: file2.js",lang="javascript"}
-~~~~~~~~
+```js
 import * as person from './file1.js';
 
 console.log(person.firstname);
 // output: robin
-~~~~~~~~
+```
 
 Imports can have an alias. It can happen that you import functionalities from multiple files that have the same named export. That's why you can use an alias.
 
-{title="Code Playground: file2.js",lang="javascript"}
-~~~~~~~~
+```js
 import { firstname as foo } from './file1.js';
 
 console.log(foo);
 // output: robin
-~~~~~~~~
+```
 
 Last but not least there exists the `default` statement. It can be used for a few use cases:
 

@@ -920,4 +920,4 @@ Ahora su cliente hace una solicitud a la API sólo una vez, aunque usted busca u
 
 Una vez más tiene sentido tomar un descanso. Internalizar los aprendizajes y aplicarlos por su cuenta. Puede experimentar con el código fuente que ha escrito hasta ahora.
 
-Puede encontrar el código fuente en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/e60436a9d6c449e76a362aef44dd5667357b7994).
+Puedes encontrar el código fuente en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/e60436a9d6c449e76a362aef44dd5667357b7994).
