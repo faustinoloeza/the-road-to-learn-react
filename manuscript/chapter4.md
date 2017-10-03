@@ -43,7 +43,7 @@ console.log(person.firstname);
 // output: robin
 ```
 
-Imports can have an alias. It can happen that you import functionalities from multiple files that have the same named export. That's why you can use an alias.
+Las importaciones pueden tener un alias. Puede ocurrir que importe funcionalidades de varios archivos que tengan el mismo nombre de exportación. Es por eso que puedes usar un alias.
 
 ```js
 import { firstname as foo } from './file1.js';
@@ -52,34 +52,32 @@ console.log(foo);
 // output: robin
 ```
 
-Last but not least there exists the `default` statement. It can be used for a few use cases:
+Por último pero no menos importante existe la declaración `default`. Se puede utilizar para algunos casos de uso:
 
-* to export and import a single functionality
-* to highlight the main functionality of the exported API of a module
-* to have a fallback import functionality
+* exportar e importar una sola funcionalidad
+* para resaltar la funcionalidad principal de la API exportada de un módulo
+* tener una funcionalidad de importación alternativa
 
-{title="Code Playground: file1.js",lang="javascript"}
-~~~~~~~~
+
+```js
 const robin = {
   firstname: 'robin',
   lastname: 'wieruch',
 };
 
 export default robin;
-~~~~~~~~
+```
 
-{title="Code Playground: file2.js",lang="javascript"}
-~~~~~~~~
+```js
 import developer from './file1.js';
 
 console.log(developer);
 // output: { firstname: 'robin', lastname: 'wieruch' }
-~~~~~~~~
+```
 
-The import name can differ from the exported default name. You can also use it in conjunction with the named export and import statements.
+El nombre de importación puede diferir del nombre predeterminado exportado. También puede utilizarlo junto con las instrucciones de exportación e importación nombradas.
 
-{title="Code Playground: file1.js",lang="javascript"}
-~~~~~~~~
+```js
 const firstname = 'robin';
 const lastname = 'wieruch';
 
@@ -94,36 +92,34 @@ export {
 };
 
 export default person;
-~~~~~~~~
+```
 
-{title="Code Playground: file2.js",lang="javascript"}
-~~~~~~~~
+```js
 import developer, { firstname, lastname } from './file1.js';
 
 console.log(developer);
 // output: { firstname: 'robin', lastname: 'wieruch' }
 console.log(firstname, lastname);
 // output: robin wieruch
-~~~~~~~~
+```
 
-In named exports you can spare additional lines and export the variables directly.
+En las exportaciones nombradas puede ahorrar líneas adicionales y exportar las variables directamente.
 
-{title="Code Playground: file1.js",lang="javascript"}
-~~~~~~~~
+```js
 export const firstname = 'robin';
 export const lastname = 'wieruch';
-~~~~~~~~
+```
 
-These are the main functionalities for ES6 modules. They help you to organize your code, to maintain your code and to design reusable module APIs. You can also export and import functionalities to test them. You will do that in one of the following chapters.
+Estas son las principales funcionalidades de los módulos ES6. Le ayudan a organizar su código, a mantener su código ya diseñar API de módulos reutilizables. También puede exportar e importar funcionalidades para probarlas. Lo harás en uno de los siguientes capítulos.
 
-### Exercises:
+### Ejercicios:
 
-* read more about [ES6 import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-* read more about [ES6 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+* leer mas sobre [ES6 import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+* leer mas sobre [ES6 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
-## Code Organization with ES6 Modules
+## Organización de código con módulos ES6
 
-You might wonder: Why didn't we follow the best practices of code splitting for the *src/App.js* file? In the file we already have multiple components which could be defined in their own files/folders (modules). For the sake of learning React, it is practical to keep these things at one place. But once your React application grows, you should consider to split up these components into multiple modules. Only that way your application scales.
+Usted podría preguntarse: ¿Por qué no seguimos las mejores prácticas de división de código para el archivo *src/App.js*? En el fichero ya tenemos múltiples componentes que podrían definirse en sus propios ficheros/carpetas(módulos). For the sake of learning React, it is practical to keep these things at one place. But once your React application grows, you should consider to split up these components into multiple modules. Only that way your application scales.
 
 In the following I will propose several module structures you *could* apply. I would recommend to apply them as an exercise at the end of the book. To keep the book itself simple, I will not perform the code splitting and will continue the following chapters with the *src/App.js* file.
 
